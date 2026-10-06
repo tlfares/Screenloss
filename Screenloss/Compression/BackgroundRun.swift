@@ -14,7 +14,7 @@ final class BackgroundRun {
     private var isEnded = false
 
     func begin(title: String, subtitle: String, onExpire: @escaping @MainActor @Sendable () -> Void) {
-        let bundleID = Bundle.main.bundleIdentifier ?? "com.fares.screenloss"
+        let bundleID = Bundle.main.bundleIdentifier ?? "com.fares.screenloss.app"
         // Each identifier can be registered once per launch: a fresh one per run.
         let identifier = "\(bundleID).compress.\(UUID().uuidString)"
         self.identifier = identifier
