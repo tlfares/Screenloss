@@ -67,7 +67,7 @@ struct BrowserView: View {
         .scrollDisabled(drag != nil)
         .scrollIndicators(.hidden)
         .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { gridWidth = $0 }
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.screenBackground.ignoresSafeArea())
         .navigationTitle(category.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbar }

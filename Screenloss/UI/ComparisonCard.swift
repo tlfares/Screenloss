@@ -87,7 +87,7 @@ struct ComparisonCard: View {
         GeometryReader { proxy in
             let size = proxy.size
             ZStack {
-                Color.black
+                Color.screenBackground
                 if let original {
                     picture(original, in: size)
                         .overlay(alignment: .topLeading) { tag("Original").padding(10) }

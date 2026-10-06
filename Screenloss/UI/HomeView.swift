@@ -28,7 +28,7 @@ struct HomeView: View {
             .animation(Motion.smooth, value: pending.count > 0)
         }
         .scrollIndicators(.hidden)
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.screenBackground.ignoresSafeArea())
         .navigationTitle("Library")
         .navigationDestination(for: MediaCategory.self) { category in
             BrowserView(category: category)
@@ -64,7 +64,7 @@ private struct OverviewCard: View {
                 if library.hasScanned {
                     SavingsBar(total: all.size, saving: all.estimatedSaving)
                     HStack {
-                        legend("Now", ByteFormat.string(all.size), dot: .white.opacity(0.55))
+                        legend("Now", ByteFormat.string(all.size), dot: .primary.opacity(0.55))
                         Spacer()
                         legend("After", "≈ \(ByteFormat.string(all.size - all.estimatedSaving))", dot: .accentColor)
                     }
@@ -240,7 +240,7 @@ struct RecentlyDeletedTip: View {
         .padding(.horizontal, 24)
         .padding(.bottom, 16)
         .presentationDetents([.large])
-        .presentationBackground(.black)
+        .presentationBackground(Color.screenBackground)
     }
 
     private func step(_ number: Int, _ text: String) -> some View {

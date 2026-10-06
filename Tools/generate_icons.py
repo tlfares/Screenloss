@@ -4,8 +4,7 @@ import json, os, shutil, sys
 root = sys.argv[1]
 tints = {  # mirrors AppTint.color
     "Mint": (0.39, 0.89, 0.62), "Blue": (0.30, 0.62, 1.0), "Indigo": (0.55, 0.52, 1.0),
-    "Pink": (1.0, 0.42, 0.62), "Orange": (1.0, 0.62, 0.27), "Yellow": (0.98, 0.82, 0.30),
-    "Silver": (0.80, 0.81, 0.84),
+    "Yellow": (0.98, 0.82, 0.30),
 }
 layers = ["photo", "arrows"]  # back to front, each its own glass group
 # The photo is a frosted plate the arrows sit on.

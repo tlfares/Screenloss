@@ -4,6 +4,7 @@ struct SettingsView: View {
     @Environment(CompressionSettings.self) private var settings
     @Environment(PendingRemovals.self) private var pending
     @AppStorage(AppTint.storageKey) private var tint = AppTint.mint.rawValue
+    @AppStorage(AppAppearance.storageKey) private var appearance = AppAppearance.dark.rawValue
     @State private var compressionOpen = true
     @State private var appearanceOpen = false
     @State private var keptOpen = false
@@ -65,15 +66,31 @@ struct SettingsView: View {
                 }
 
                 CollapsibleGlassCard(title: "Appearance", systemImage: "paintpalette", isExpanded: $appearanceOpen) {
-                    HStack(spacing: 12) {
-                        ForEach(AppTint.allCases) { option in
-                            swatch(option)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Mode").font(.subheadline).foregroundStyle(.secondary)
+                        GlassSegmentedPicker(
+                            "Appearance",
+                            options: AppAppearance.allCases,
+                            selection: Binding(
+                                get: { AppAppearance(rawValue: appearance) ?? .dark },
+                                set: { appearance = $0.rawValue }
+                            ),
+                            title: \.title,
+                            symbol: \.symbol,
+                            commitsWhenSettled: true
+                        )
+                        Divider().padding(.vertical, 4)
+                        Text("Accent color").font(.subheadline).foregroundStyle(.secondary)
+                        HStack(spacing: 14) {
+                            ForEach(AppTint.allCases) { option in
+                                swatch(option)
+                            }
                         }
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .sensoryFeedback(.selection, trigger: tint)
-                    .onChange(of: tint) { _, newValue in
-                        AppTint(rawValue: newValue)?.applyIcon()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .sensoryFeedback(.selection, trigger: tint)
+                        .onChange(of: tint) { _, newValue in
+                            AppTint.stored(newValue).applyIcon()
+                        }
                     }
                 }
 
@@ -109,7 +126,7 @@ struct SettingsView: View {
             .padding(.bottom, 32)
         }
         .scrollIndicators(.hidden)
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.screenBackground.ignoresSafeArea())
         .navigationTitle("Settings")
     }
 
@@ -136,7 +153,7 @@ struct SettingsView: View {
             withAnimation(Motion.snappy) { tint = option.rawValue }
         } label: {
             Circle()
-                .fill(option.color)
+                .fill(option.swatchColor)
                 .frame(width: 36, height: 36)
                 .overlay {
                     if isSelected {
@@ -144,7 +161,7 @@ struct SettingsView: View {
                     }
                 }
                 .overlay {
-                    Circle().stroke(.white.opacity(isSelected ? 0.9 : 0.25), lineWidth: isSelected ? 2 : 1)
+                    Circle().stroke(Color.primary.opacity(isSelected ? 0.9 : 0.25), lineWidth: isSelected ? 2 : 1)
                 }
         }
         .buttonStyle(.plain)

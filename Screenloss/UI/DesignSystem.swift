@@ -9,9 +9,12 @@ nonisolated enum ByteFormat {
 /// The accent the app is drawn in. Green by default: it's the color of
 /// space coming back.
 enum AppTint: String, CaseIterable, Identifiable {
-    case mint, blue, indigo, pink, orange, yellow, silver
+    case mint, blue, indigo, yellow
 
     static let storageKey = "appTint"
+
+    /// The stored tint, or mint when it's gone (one removed in an update).
+    static func stored(_ rawValue: String) -> AppTint { AppTint(rawValue: rawValue) ?? .mint }
 
     var id: String { rawValue }
 
@@ -20,23 +23,32 @@ enum AppTint: String, CaseIterable, Identifiable {
         case .mint: "Mint"
         case .blue: "Blue"
         case .indigo: "Indigo"
-        case .pink: "Pink"
-        case .orange: "Orange"
         case .yellow: "Yellow"
-        case .silver: "Silver"
         }
     }
 
-    var color: Color {
+    private var shades: (bright: (Double, Double, Double), deep: (Double, Double, Double)) {
         switch self {
-        case .mint: Color(red: 0.39, green: 0.89, blue: 0.62)
-        case .blue: Color(red: 0.30, green: 0.62, blue: 1.0)
-        case .indigo: Color(red: 0.55, green: 0.52, blue: 1.0)
-        case .pink: Color(red: 1.0, green: 0.42, blue: 0.62)
-        case .orange: Color(red: 1.0, green: 0.62, blue: 0.27)
-        case .yellow: Color(red: 0.98, green: 0.82, blue: 0.30)
-        case .silver: Color(red: 0.80, green: 0.81, blue: 0.84)
+        case .mint: ((0.39, 0.89, 0.62), (0.0, 0.62, 0.40))
+        case .blue: ((0.30, 0.62, 1.0), (0.0, 0.46, 0.96))
+        case .indigo: ((0.55, 0.52, 1.0), (0.40, 0.34, 0.92))
+        case .yellow: ((0.98, 0.82, 0.30), (0.78, 0.56, 0.0))
         }
+    }
+
+    /// Deeper in light mode: the bright shades read poorly on white.
+    var color: Color {
+        let shades = shades
+        return Color(uiColor: UIColor { traits in
+            let c = traits.userInterfaceStyle == .light ? shades.deep : shades.bright
+            return UIColor(red: c.0, green: c.1, blue: c.2, alpha: 1)
+        })
+    }
+
+    /// The swatch in Settings: always the bright shade, in both modes.
+    var swatchColor: Color {
+        let c = shades.bright
+        return Color(red: c.0, green: c.1, blue: c.2)
     }
 
     /// The home screen icon drawn in this tint. Mint is the primary icon.
@@ -51,6 +63,93 @@ enum AppTint: String, CaseIterable, Identifiable {
         guard application.supportsAlternateIcons, application.alternateIconName != iconName else { return }
         application.setAlternateIconName(iconName)
     }
+}
+
+/// Light, dark, or as the system is, the same as in LRCplayer.
+enum AppAppearance: String, CaseIterable, Identifiable {
+    case light
+    case dark
+    case system
+
+    static let storageKey = "appAppearance"
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .light: "Light"
+        case .dark: "Dark"
+        case .system: "System"
+        }
+    }
+
+    var symbol: String {
+        switch self {
+        case .light: "sun.max.fill"
+        case .dark: "moon.fill"
+        case .system: "circle.lefthalf.filled"
+        }
+    }
+
+    var style: UIUserInterfaceStyle {
+        switch self {
+        case .light: .light
+        case .dark: .dark
+        case .system: .unspecified
+        }
+    }
+
+    static var current: AppAppearance {
+        AppAppearance(rawValue: UserDefaults.standard.string(forKey: storageKey) ?? "") ?? .dark
+    }
+
+    /// Set on the windows rather than through SwiftUI's
+    /// `preferredColorScheme`, which doesn't go back to the system's style
+    /// once it has forced one. Windows opened later get it as they appear;
+    /// the root view applies it at launch and whenever the setting changes.
+    @MainActor static func startApplying() {
+        NotificationCenter.default.addObserver(forName: UIWindow.didBecomeVisibleNotification, object: nil, queue: nil) { note in
+            let window = note.object as? UIWindow
+            MainActor.assumeIsolated {
+                window?.overrideUserInterfaceStyle = current.style
+            }
+        }
+    }
+
+    /// `animated`: cross-fades to the new style (a style change otherwise
+    /// swaps every color in one frame).
+    @MainActor static func apply(animated: Bool) {
+        let style = current.style
+        for case let scene as UIWindowScene in UIApplication.shared.connectedScenes {
+            for window in scene.windows where window.overrideUserInterfaceStyle != style {
+                guard animated else {
+                    window.overrideUserInterfaceStyle = style
+                    continue
+                }
+                // A still of the screen as it is, faded out over the new style.
+                // (A view transition's "before" image kept the Liquid Glass
+                // live: it switched to the new style in the first frame.)
+                let still = window.screen.snapshotView(afterScreenUpdates: false)
+                still.frame = window.bounds
+                still.isUserInteractionEnabled = false
+                window.addSubview(still)
+                window.overrideUserInterfaceStyle = style
+                UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut, .allowUserInteraction]) {
+                    still.alpha = 0
+                } completion: { _ in
+                    still.removeFromSuperview()
+                }
+            }
+        }
+    }
+}
+
+extension Color {
+    /// Behind every screen: black in dark mode, the grouped gray in light
+    /// mode, so the glass cards stand out in both.
+    static let screenBackground = Color(uiColor: UIColor { traits in
+        traits.userInterfaceStyle == .light ? .systemGroupedBackground : .black
+    })
 }
 
 enum Motion {
@@ -109,51 +208,157 @@ struct CollapsibleGlassCard<Content: View>: View {
     }
 }
 
-/// A capsule picker whose highlight slides between options, the same as
-/// in XMGo and LRCplayer.
-struct GlassSegmentedPicker<Option: Hashable & Identifiable>: View {
-    let options: [Option]
-    @Binding var selection: Option
-    let title: (Option) -> String
-    var symbol: ((Option) -> String)?
-    @Namespace private var highlight
+/// A capsule picker whose selection slides between options and can be
+/// dragged, the same as in LRCplayer.
+struct GlassSegmentedPicker<Value: Hashable>: View {
+    let options: [Value]
+    @Binding var selection: Value
+    let title: (Value) -> String
+    let symbol: ((Value) -> String)?
+    let label: String
+    let commitsWhenSettled: Bool
+
+    /// What the capsule shows, ahead of `selection` until it settles.
+    @State private var shown: Value?
+    /// The slide whose end hands its option over (a newer one replaces it).
+    @State private var pendingSlide: UUID?
+    /// The capsule's leading edge while it follows the finger.
+    @State private var dragX: CGFloat?
+    @State private var width: CGFloat = 0
+    /// The selection held under the finger: it lifts, like iOS's glass
+    /// selections do.
+    @State private var isHolding = false
+    @GestureState private var isTouching = false
+
+    private static var inset: CGFloat { 4 }
+    private static var settle: Animation { .spring(response: 0.32, dampingFraction: 0.86) }
+
+    init(_ label: String, options: [Value], selection: Binding<Value>, title: @escaping (Value) -> String, symbol: ((Value) -> String)? = nil, commitsWhenSettled: Bool = false) {
+        self.label = label
+        self.options = options
+        _selection = selection
+        self.title = title
+        self.symbol = symbol
+        self.commitsWhenSettled = commitsWhenSettled
+    }
+
+    private var current: Value { shown ?? selection }
+    private var segment: CGFloat { options.isEmpty ? 0 : (width - Self.inset * 2) / CGFloat(options.count) }
+
+    private func index(of value: Value) -> Int { options.firstIndex(of: value) ?? 0 }
+
+    private func nearestIndex(toLeadingEdge x: CGFloat) -> Int {
+        guard segment > 0 else { return 0 }
+        return min(max(Int((x / segment).rounded()), 0), options.count - 1)
+    }
 
     var body: some View {
-        HStack(spacing: 4) {
-            ForEach(options) { option in
-                let isSelected = option == selection
-                Button {
-                    withAnimation(Motion.snappy) { selection = option }
-                } label: {
-                    VStack(spacing: 4) {
+        let highlighted = dragX.map { nearestIndex(toLeadingEdge: $0) } ?? index(of: current)
+        ZStack(alignment: .leading) {
+            Capsule()
+                .fill(.tint.opacity(isHolding ? 0.22 : 0.30))
+                .glassEffect(.regular.interactive(), in: .capsule)
+                .frame(width: max(segment, 0))
+                .scaleEffect(isHolding ? 1.1 : 1)
+                .offset(x: dragX ?? CGFloat(index(of: current)) * segment)
+            HStack(spacing: 0) {
+                ForEach(Array(options.enumerated()), id: \.element) { offset, option in
+                    VStack(spacing: 5) {
                         if let symbol {
                             Image(systemName: symbol(option)).font(.headline)
                         }
                         Text(title(option))
-                            .font(symbol == nil ? .subheadline.weight(.semibold) : .caption.weight(.semibold))
+                            .font(symbol == nil ? .subheadline.weight(.semibold) : .caption2.weight(.semibold))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.8)
                     }
                     .frame(maxWidth: .infinity)
-                    .frame(minHeight: symbol == nil ? 36 : 56)
-                    .padding(.horizontal, 4)
-                    .foregroundStyle(isSelected ? AnyShapeStyle(.primary) : AnyShapeStyle(.secondary))
-                    .background {
-                        if isSelected {
-                            Capsule()
-                                .fill(.tint.opacity(0.28))
-                                .matchedGeometryEffect(id: "highlight", in: highlight)
-                        }
-                    }
-                    .contentShape(Capsule())
+                    .foregroundStyle(offset == highlighted ? .primary : .secondary)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityAddTraits(offset == highlighted ? .isSelected : [])
+                    .accessibilityAction { select(option) }
                 }
-                .buttonStyle(.plain)
-                .accessibilityAddTraits(isSelected ? .isSelected : [])
             }
         }
-        .padding(4)
-        .glassEffect(.regular.interactive(), in: .capsule)
-        .sensoryFeedback(.selection, trigger: selection)
+        .frame(height: symbol == nil ? 40 : 58)
+        .padding(Self.inset)
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { width = $0 }
+        .contentShape(Capsule())
+        .gesture(drag)
+        // Not interactive: the whole capsule bouncing under the finger
+        // fought the selection's slide (only the selection moves, as in
+        // iOS's segmented controls).
+        .glassEffect(.regular, in: .capsule)
+        .onChange(of: isTouching) { _, touching in
+            // Also on a cancelled touch, which skips `onEnded`.
+            if !touching {
+                if isHolding { withAnimation(Self.settle) { isHolding = false } }
+                if dragX != nil { withAnimation(Self.settle) { dragX = nil } }
+            }
+        }
+        .onChange(of: selection) { _, _ in
+            if pendingSlide == nil { shown = nil }
+        }
+        .sensoryFeedback(.selection, trigger: highlighted)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(label)
+    }
+
+    private var drag: some Gesture {
+        DragGesture(minimumDistance: 0)
+            .updating($isTouching) { _, state, _ in state = true }
+            .onChanged { value in
+                let startsOnSelection = Int((value.startLocation.x - Self.inset) / max(segment, 1)) == index(of: current)
+                if startsOnSelection, !isHolding {
+                    withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) { isHolding = true }
+                }
+                // A drag starts on the selection, like iOS's; elsewhere the
+                // touch is a tap on the option it lifts on.
+                let startIndex = Int((value.startLocation.x - Self.inset) / max(segment, 1))
+                guard abs(value.translation.width) > 6, startIndex == index(of: current) || dragX != nil else { return }
+                let start = CGFloat(index(of: current)) * segment
+                let x = min(max(start + value.translation.width, 0), segment * CGFloat(options.count - 1))
+                if dragX == nil {
+                    withAnimation(.interactiveSpring(response: 0.2, dampingFraction: 0.9)) { dragX = x }
+                } else {
+                    dragX = x
+                }
+            }
+            .onEnded { value in
+                let target: Int
+                if let dragX {
+                    target = nearestIndex(toLeadingEdge: dragX)
+                } else {
+                    target = min(max(Int((value.location.x - Self.inset) / max(segment, 1)), 0), options.count - 1)
+                }
+                select(options[target])
+            }
+    }
+
+    private func select(_ option: Value) {
+        guard commitsWhenSettled else {
+            pendingSlide = nil
+            withAnimation(Self.settle) {
+                shown = nil
+                dragX = nil
+                isHolding = false
+            }
+            if option != selection { selection = option }
+            return
+        }
+        let slide = UUID()
+        pendingSlide = option == selection ? nil : slide
+        withAnimation(Self.settle, completionCriteria: .logicallyComplete) {
+            shown = option == selection ? nil : option
+            dragX = nil
+            isHolding = false
+        } completion: {
+            guard pendingSlide == slide else { return }
+            pendingSlide = nil
+            // `shown` stays until `selection` actually changes: the owner
+            // may apply it a moment later.
+            selection = option
+        }
     }
 }
 
@@ -191,9 +396,9 @@ struct SavingsBar: View {
         GeometryReader { proxy in
             let width = proxy.size.width
             ZStack(alignment: .leading) {
-                Capsule().fill(.white.opacity(0.12))
+                Capsule().fill(Color.primary.opacity(0.12))
                 Capsule()
-                    .fill(.white.opacity(0.55))
+                    .fill(Color.primary.opacity(0.55))
                     .frame(width: max(0, width * (1 - fraction)))
                 Capsule()
                     .fill(.tint)

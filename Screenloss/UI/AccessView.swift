@@ -68,7 +68,7 @@ struct AccessView: View {
         }
         .padding(.horizontal, 24)
         .padding(.bottom, 12)
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.screenBackground.ignoresSafeArea())
     }
 
     private func point(_ symbol: String, _ text: LocalizedStringKey) -> some View {

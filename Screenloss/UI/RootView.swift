@@ -24,7 +24,7 @@ struct RootView: View {
                 AccessView()
             }
         }
-        .background(Color.black.ignoresSafeArea())
+        .background(Color.screenBackground.ignoresSafeArea())
         .fullScreenCover(item: $jobs.current) { job in
             JobView(job: job)
         }

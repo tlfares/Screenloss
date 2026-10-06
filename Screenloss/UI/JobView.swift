@@ -62,7 +62,7 @@ struct JobView: View {
                 .animation(Motion.smooth, value: removal)
             }
             .scrollIndicators(.hidden)
-            .background(Color.black.ignoresSafeArea())
+            .background(Color.screenBackground.ignoresSafeArea())
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -188,7 +188,7 @@ private struct ProgressRing: View {
         let fraction = job.isFinished && !job.wasCancelled ? 1 : job.fractionCompleted
         ZStack {
             Circle()
-                .stroke(.white.opacity(0.1), lineWidth: 14)
+                .stroke(Color.primary.opacity(0.1), lineWidth: 14)
             Circle()
                 .trim(from: 0, to: fraction)
                 .stroke(.tint, style: StrokeStyle(lineWidth: 14, lineCap: .round))
@@ -279,7 +279,7 @@ private struct IssuesSheet: View {
                 .listRowBackground(Color.clear)
             }
             .scrollContentBackground(.hidden)
-            .background(Color.black.ignoresSafeArea())
+            .background(Color.screenBackground.ignoresSafeArea())
             .navigationTitle("Issues")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

@@ -56,7 +56,7 @@ struct AssetThumbnail: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                Color(white: 0.12)
+                Color(.secondarySystemFill)
                 if let image {
                     Image(uiImage: image)
                         .resizable()
