@@ -56,7 +56,7 @@ struct AssetThumbnail: View {
     var body: some View {
         GeometryReader { proxy in
             ZStack {
-                Rectangle().fill(.quaternary)
+                Color(white: 0.12)
                 if let image {
                     Image(uiImage: image)
                         .resizable()
@@ -71,7 +71,9 @@ struct AssetThumbnail: View {
                 guard size.width > 0, size.height > 0 else { return }
                 let mode: PHImageContentMode = contentMode == .fill ? .aspectFill : .aspectFit
                 for await next in ThumbnailLoader.shared.images(for: id, pointSize: size, scale: displayScale, contentMode: mode) {
-                    image = next
+                    // Decoded off the main thread, so scrolling doesn't pay
+                    // for it when the image first shows.
+                    image = await next.byPreparingForDisplay() ?? next
                 }
             }
         }

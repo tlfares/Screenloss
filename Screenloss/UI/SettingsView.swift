@@ -92,10 +92,18 @@ struct SettingsView: View {
                 CollapsibleGlassCard(title: "About", systemImage: "info.circle", isExpanded: $aboutOpen) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Everything happens on this iPhone. Nothing is uploaded, no account, no subscription.")
-                        Text("Questions, feedback or bug reports: [@rmxptfl](https://x.com/rmxptfl) on X · [tlfares](https://github.com/tlfares) on GitHub")
+                        Text("Questions, feedback or bug reports: [@rmxptfl](https://x.com/rmxptfl) on X · [tlfares](https://github.com/tlfares) on GitHub, or at the bottom of [tlfares.pages.dev](https://tlfares.pages.dev).")
+                        Divider()
+                        Text("I don't drink coffee, but if you like the app, you can still [buy me a coffee](https://buymeacoffee.com/tlfares).")
                     }
                     .font(.footnote)
                 }
+
+                Text(Self.versionText)
+                    .font(.footnote)
+                    .foregroundStyle(.tertiary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 12)
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 32)
@@ -104,6 +112,15 @@ struct SettingsView: View {
         .background(Color.black.ignoresSafeArea())
         .navigationTitle("Settings")
     }
+
+    /// "Screenloss 0.1 (1)", from the bundle.
+    private static let versionText: String = {
+        let info = Bundle.main.infoDictionary ?? [:]
+        let name = info["CFBundleDisplayName"] as? String ?? info["CFBundleName"] as? String ?? "Screenloss"
+        let version = info["CFBundleShortVersionString"] as? String ?? "?"
+        let build = info["CFBundleVersion"] as? String
+        return build.map { "\(name) \(version) (\($0))" } ?? "\(name) \(version)"
+    }()
 
     private func row<Control: View>(_ title: String, @ViewBuilder control: () -> Control) -> some View {
         HStack {

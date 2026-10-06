@@ -95,7 +95,7 @@ struct BrowserView: View {
                     isSelected: selection.contains(item.id),
                     isPending: pendingIDs.contains(item.id)
                 )
-                .onTapGesture { tap(item) }
+                .accessibilityAction { tap(item) }
                 .contextMenu {
                     if let blocker = item.blocker {
                         Text("\(blocker.label): \(blocker.explanation)")
@@ -109,6 +109,11 @@ struct BrowserView: View {
                         .frame(width: 320, height: 320 * aspect(of: item))
                 }
             }
+        }
+        // One recognizer for the whole grid: a tap gesture on every cell
+        // makes UIKit weigh them all against each other on each touch.
+        .onTapGesture { location in
+            if let index = index(at: location, count: visible.count) { tap(visible[index]) }
         }
         .gesture(dragSelect(visible))
     }
@@ -339,31 +344,30 @@ struct AssetCell: View {
             .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
     }
 
+    /// Symbols rather than stacked shapes, and no shadows: each shadow is
+    /// an offscreen pass, on every cell, every frame it moves.
     @ViewBuilder
     private var badge: some View {
         if !item.isEligible {
             Image(systemName: "nosign")
                 .font(.system(size: 13, weight: .bold))
                 .foregroundStyle(.white)
-                .shadow(radius: 2)
         } else if isPending {
             Image(systemName: "checkmark.seal.fill")
                 .font(.system(size: 16))
                 .symbolRenderingMode(.palette)
                 .foregroundStyle(.black, .tint)
+        } else if isSelected {
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 17))
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.black, .tint)
+                .background(Circle().fill(.white).padding(-1.5))
         } else {
-            ZStack {
-                Circle()
-                    .strokeBorder(.white, lineWidth: 1.5)
-                    .background(Circle().fill(isSelected ? AnyShapeStyle(.tint) : AnyShapeStyle(.black.opacity(0.2))))
-                if isSelected {
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 10, weight: .bold))
-                        .foregroundStyle(.black)
-                }
-            }
-            .frame(width: 20, height: 20)
-            .shadow(color: .black.opacity(0.3), radius: 2)
+            Image(systemName: "circle")
+                .font(.system(size: 17, weight: .medium))
+                .foregroundStyle(.white)
+                .background(Circle().fill(.black.opacity(0.25)))
         }
     }
 }
