@@ -9,6 +9,15 @@ struct BrowserView: View {
     @Environment(LibraryStore.self) private var library
     @Environment(PendingRemovals.self) private var pending
     @State private var items: [MediaItem] = []
+    /// `items`, or only the compressible ones, kept rather than filtered on
+    /// every update: a category can hold tens of thousands.
+    @State private var visible: [MediaItem] = []
+    /// Bumped whenever `visible` changes, so the grid can skip comparing it.
+    @State private var visibleVersion = 0
+    /// Each item's size and estimated saving, so the totals of a selection
+    /// are a sum, not a pass of the estimator over every item.
+    @State private var figures: [String: Figures] = [:]
+    @State private var selectableCount = 0
     @State private var selection = Set<String>()
     @State private var sort: BrowserSort
     @State private var onlyCompressible = false
@@ -23,35 +32,55 @@ struct BrowserView: View {
         _sort = State(initialValue: category.defaultSort)
     }
 
-    private var visibleItems: [MediaItem] {
-        onlyCompressible ? items.filter(\.isEligible) : items
+    private struct Figures {
+        let size: Int64
+        let saving: Int64
+    }
+
+    private struct Totals {
+        var count = 0
+        var size: Int64 = 0
+        var saving: Int64 = 0
     }
 
     private var selectedItems: [MediaItem] {
         items.filter { selection.contains($0.id) }
     }
 
+    private var totals: Totals {
+        var totals = Totals(count: selection.count)
+        for id in selection {
+            guard let figure = figures[id] else { continue }
+            totals.size += figure.size
+            totals.saving += figure.saving
+        }
+        return totals
+    }
+
     var body: some View {
-        let visible = visibleItems
-        content(visible)
+        let totals = totals
+        content(totals)
             .background(Color.screenBackground.ignoresSafeArea())
             .navigationTitle(category.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
             .toolbar(.hidden, for: .tabBar)
-            .safeAreaBar(edge: .bottom) { bottomBar }
+            .safeAreaBar(edge: .bottom) { bottomBar(totals) }
             .sheet(isPresented: $showsReview) {
                 ReviewSheet(items: selectedItems)
             }
             .task(id: library.version) { load() }
+            // The estimates follow the settings and what's already compressed.
+            .onChange(of: library.summaries) { _, _ in measure() }
+            .onChange(of: onlyCompressible) { _, _ in filter() }
     }
 
     @ViewBuilder
-    private func content(_ visible: [MediaItem]) -> some View {
+    private func content(_ totals: Totals) -> some View {
         if hasLoaded && visible.isEmpty {
             ScrollView {
                 VStack(spacing: 14) {
-                    summary.padding(.horizontal, 16)
+                    summary(totals).padding(.horizontal, 16)
                     ContentUnavailableView(
                         "Nothing Here",
                         systemImage: category.symbol,
@@ -65,6 +94,7 @@ struct BrowserView: View {
             GeometryReader { proxy in
                 AssetGrid(
                     items: visible,
+                    itemsVersion: visibleVersion,
                     insets: proxy.safeAreaInsets,
                     selection: selection,
                     pendingIDs: pending.originalIDs,
@@ -73,19 +103,15 @@ struct BrowserView: View {
                     onTap: tap,
                     onSelectionChange: { selection = $0 }
                 ) {
-                    summary
+                    summary(totals)
                 }
                 .ignoresSafeArea()
             }
         }
     }
 
-    private var summary: some View {
-        SelectionSummary(
-            selected: selectedItems,
-            total: items.count,
-            saving: library.estimatedSaving(of: selectedItems)
-        )
+    private func summary(_ totals: Totals) -> some View {
+        SelectionSummary(count: totals.count, total: items.count, size: totals.size, saving: totals.saving)
     }
 
     private func tap(_ item: MediaItem) {
@@ -119,26 +145,26 @@ struct BrowserView: View {
             } label: {
                 Label("Sort and Filter", systemImage: "arrow.up.arrow.down")
             }
-            .onChange(of: sort) { _, _ in withAnimation(Motion.smooth) { items = sort.sorted(items) } }
+            .onChange(of: sort) { _, _ in
+                items = sort.sorted(items)
+                filter()
+            }
         }
         // Each in its own capsule: sharing one, they sat at opposite ends
         // of it with a wide gap between.
         ToolbarSpacer(.fixed, placement: .topBarTrailing)
         ToolbarItem(placement: .topBarTrailing) {
-            let eligible = items.filter(isSelectable)
-            let allSelected = !eligible.isEmpty && eligible.allSatisfy { selection.contains($0.id) }
+            // The selection only ever holds selectable items.
+            let allSelected = selectableCount > 0 && selection.count >= selectableCount
             Button(allSelected ? "Deselect All" : "Select All") {
-                withAnimation(Motion.snappy) {
-                    selection = allSelected ? [] : Set(eligible.map(\.id))
-                }
+                selection = allSelected ? [] : Set(items.lazy.filter(isSelectable).map(\.id))
             }
-            .disabled(eligible.isEmpty)
+            .disabled(selectableCount == 0)
         }
     }
 
-    private var bottomBar: some View {
-        let selected = selectedItems
-        return VStack(spacing: 10) {
+    private func bottomBar(_ totals: Totals) -> some View {
+        VStack(spacing: 10) {
             if let hint {
                 Text(hint)
                     .font(.footnote)
@@ -152,10 +178,10 @@ struct BrowserView: View {
                 showsReview = true
             } label: {
                 VStack(spacing: 2) {
-                    Text(selected.isEmpty ? "Select Items" : "Review \(selected.count.formatted()) \(selected.count == 1 ? "Item" : "Items")")
+                    Text(totals.count == 0 ? "Select Items" : "Review \(totals.count.formatted()) \(totals.count == 1 ? "Item" : "Items")")
                         .font(.headline)
-                    if !selected.isEmpty {
-                        Text("≈ \(ByteFormat.string(library.estimatedSaving(of: selected))) to free")
+                    if totals.count > 0 {
+                        Text("≈ \(ByteFormat.string(totals.saving)) to free")
                             .font(.caption.weight(.medium))
                             .opacity(0.85)
                     }
@@ -166,7 +192,7 @@ struct BrowserView: View {
             }
             .buttonStyle(.glassProminent)
             .controlSize(.large)
-            .disabled(selected.isEmpty)
+            .disabled(totals.count == 0)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 8)
@@ -185,38 +211,52 @@ struct BrowserView: View {
 
     private func load() {
         let fresh = sort.sorted(library.items(in: category))
-        let ids = Set(fresh.map(\.id))
-        let pendingIDs = pending.originalIDs
+        let selectable = Set(fresh.lazy.filter(isSelectable).map(\.id))
         if !hasLoaded {
             // A category is opened to compress it: start with all of it,
             // minus originals that already have a copy.
-            if category != .everything {
-                selection = Set(fresh.lazy.filter(isSelectable).map(\.id))
-            }
+            if category != .everything { selection = selectable }
             hasLoaded = true
         } else {
-            selection.formIntersection(ids)
+            selection.formIntersection(selectable)
         }
-        selection.subtract(pendingIDs)
+        selection.subtract(pending.originalIDs)
+        selectableCount = selectable.count
         items = fresh
+        measure()
+        filter()
+    }
+
+    private func measure() {
+        var figures: [String: Figures] = [:]
+        figures.reserveCapacity(items.count)
+        for item in items {
+            figures[item.id] = Figures(size: item.size, saving: library.estimatedSaving(of: CollectionOfOne(item)))
+        }
+        self.figures = figures
+    }
+
+    private func filter() {
+        visible = onlyCompressible ? items.filter(\.isEligible) : items
+        visibleVersion += 1
     }
 }
 
 /// What's selected, and what it would come to.
 private struct SelectionSummary: View {
-    let selected: [MediaItem]
+    let count: Int
     let total: Int
+    let size: Int64
     let saving: Int64
 
     var body: some View {
-        let size = selected.reduce(Int64(0)) { $0 + $1.size }
         GlassCard(padding: 16) {
             HStack(spacing: 12) {
-                Figure(value: "\(selected.count.formatted())", label: "of \(total.formatted()) selected")
+                Figure(value: "\(count.formatted())", label: "of \(total.formatted()) selected")
                 Figure(value: ByteFormat.string(size), label: "Selected size")
                 Figure(value: "≈ \(ByteFormat.string(saving))", label: "To free", tinted: true)
             }
         }
-        .animation(Motion.smooth, value: selected.count)
+        .animation(Motion.smooth, value: count)
     }
 }

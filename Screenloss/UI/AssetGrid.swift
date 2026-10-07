@@ -8,6 +8,9 @@ import UIKit
 /// screen.
 struct AssetGrid<Header: View>: UIViewRepresentable {
     let items: [MediaItem]
+    /// Changes whenever `items` does: comparing tens of thousands of items
+    /// on every update would cost more than the update.
+    let itemsVersion: Int
     /// The bars' heights: the grid runs under them, its content starts below.
     let insets: EdgeInsets
     let selection: Set<String>
@@ -79,6 +82,7 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
         private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
         private var itemsByID: [String: MediaItem] = [:]
         private var order: [String] = []
+        private var itemsVersion: Int?
         private var assets: [String: PHAsset] = [:]
         private var selection = Set<String>()
         private var pendingIDs = Set<String>()
@@ -120,33 +124,31 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
                 view.verticalScrollIndicatorInsets = inset
                 if atTop { view.contentOffset.y = -inset.top }
             }
-            let ids = grid.items.map(\.id)
-            let itemsChanged = ids != order
-            let dataChanged = !itemsChanged && grid.items.contains { itemsByID[$0.id] != $0 }
+            let itemsChanged = grid.itemsVersion != itemsVersion
             let stateChanged = grid.selection != selection || grid.pendingIDs != pendingIDs || grid.tint != tint
-
-            itemsByID = Dictionary(grid.items.map { ($0.id, $0) }, uniquingKeysWith: { $1 })
             selection = grid.selection
             pendingIDs = grid.pendingIDs
             tint = grid.tint
 
             if itemsChanged {
-                let missing = ids.filter { assets[$0] == nil }
-                if !missing.isEmpty {
-                    PHAsset.fetchAssets(withLocalIdentifiers: missing, options: nil).enumerateObjects { asset, _, _ in
-                        self.assets[asset.localIdentifier] = asset
-                    }
+                itemsVersion = grid.itemsVersion
+                let ids = grid.items.map(\.id)
+                let orderChanged = ids != order
+                let dataChanged = !orderChanged && grid.items.contains { itemsByID[$0.id] != $0 }
+                itemsByID = Dictionary(grid.items.map { ($0.id, $0) }, uniquingKeysWith: { $1 })
+                if orderChanged {
+                    var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+                    snapshot.appendSections([0])
+                    snapshot.appendItems(ids)
+                    // A reorder of thousands isn't worth animating.
+                    let animated = !order.isEmpty && ids.count < 2000
+                    order = ids
+                    dataSource.apply(snapshot, animatingDifferences: animated)
+                } else if dataChanged {
+                    var snapshot = dataSource.snapshot()
+                    snapshot.reconfigureItems(ids)
+                    dataSource.apply(snapshot, animatingDifferences: false)
                 }
-                var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(ids)
-                let animated = !order.isEmpty
-                order = ids
-                dataSource.apply(snapshot, animatingDifferences: animated)
-            } else if dataChanged {
-                var snapshot = dataSource.snapshot()
-                snapshot.reconfigureItems(ids)
-                dataSource.apply(snapshot, animatingDifferences: false)
             }
             if itemsChanged || stateChanged {
                 refreshVisibleCells(in: view)
@@ -230,9 +232,27 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
             return options
         }
 
+        /// Photos records are fetched as they're about to be shown, a screen
+        /// or two at a time: all of them at once held the grid back for
+        /// seconds in a large library.
+        private func asset(for id: String) -> PHAsset? {
+            if let asset = assets[id] { return asset }
+            guard let index = order.firstIndex(of: id) else { return nil }
+            fetchAssets(in: max(0, index - 40)..<min(order.count, index + 160))
+            return assets[id]
+        }
+
+        private func fetchAssets(in range: Range<Int>) {
+            let missing = order[range].filter { assets[$0] == nil }
+            guard !missing.isEmpty else { return }
+            PHAsset.fetchAssets(withLocalIdentifiers: Array(missing), options: nil).enumerateObjects { asset, _, _ in
+                self.assets[asset.localIdentifier] = asset
+            }
+        }
+
         private func loadThumbnail(for cell: AssetGridCell, id: String) {
             cell.cancelRequest(using: images)
-            guard let asset = assets[id] else { return }
+            guard let asset = asset(for: id) else { return }
             let request = images.requestImage(for: asset, targetSize: targetSize(in: collectionView), contentMode: .aspectFill, options: Self.options) { [weak cell] image, info in
                 let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
                 guard let image else { return }
@@ -249,7 +269,7 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
         }
 
         func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-            let assets = indexPaths.compactMap { dataSource.itemIdentifier(for: $0) }.compactMap { self.assets[$0] }
+            let assets = indexPaths.compactMap { dataSource.itemIdentifier(for: $0) }.compactMap { asset(for: $0) }
             images.startCachingImages(for: assets, targetSize: targetSize(in: collectionView), contentMode: .aspectFill, options: Self.options)
         }
 
@@ -272,7 +292,7 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
                   let id = dataSource.itemIdentifier(for: indexPath),
                   let item = itemsByID[id]
             else { return nil }
-            let asset = assets[id]
+            let asset = asset(for: id)
             return UIContextMenuConfiguration(identifier: id as NSString) {
                 asset.map { AssetPreviewController(asset: $0, item: item) }
             } actionProvider: { [weak self] _ in

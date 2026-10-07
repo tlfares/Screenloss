@@ -59,6 +59,9 @@ struct ReviewSheet: View {
                 .padding(.bottom, 24)
             }
             .scrollIndicators(.hidden)
+            // The Compress button floats on the content: no frosted band
+            // behind it, which showed as a gray zone when it was pressed.
+            .scrollEdgeEffectHidden(true, for: .bottom)
             .background(Color.screenBackground.ignoresSafeArea())
             .navigationTitle("Review")
             .navigationBarTitleDisplayMode(.inline)
