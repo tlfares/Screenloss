@@ -58,7 +58,8 @@ struct SettingsView: View {
                             }
                         }
                         Toggle("Remove originals when done", isOn: $settings.removeOriginals)
-                        Text("A copy that isn't at least that much smaller is thrown away and the original stays. Originals are only removed after iOS asks you.")
+                        Toggle("Skip what's already compressed", isOn: $settings.skipsCompressed)
+                        Text("A copy that isn't at least that much smaller is thrown away and the original stays. Originals are only removed after iOS asks you. Copies Screenloss made start unselected; you can still pick them.")
                             .font(.footnote)
                             .foregroundStyle(.secondary)
                     }

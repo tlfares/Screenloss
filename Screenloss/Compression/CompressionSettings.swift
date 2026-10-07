@@ -178,6 +178,8 @@ final class CompressionSettings {
     var livePhotoMode: LivePhotoMode { didSet { store(livePhotoMode.rawValue, "livePhotoMode") } }
     var minimumSaving: Double { didSet { store(minimumSaving, "minimumSaving") } }
     var removeOriginals: Bool { didSet { store(removeOriginals, "removeOriginals") } }
+    /// Copies this app made start unselected when a category is opened.
+    var skipsCompressed: Bool { didSet { store(skipsCompressed, "skipsCompressed") } }
 
     private init() {
         let defaults = UserDefaults.standard
@@ -189,6 +191,7 @@ final class CompressionSettings {
         livePhotoMode = defaults.string(forKey: "livePhotoMode").flatMap(LivePhotoMode.init) ?? .keepLive
         minimumSaving = defaults.object(forKey: "minimumSaving") as? Double ?? 0.1
         removeOriginals = defaults.object(forKey: "removeOriginals") as? Bool ?? true
+        skipsCompressed = defaults.object(forKey: "skipsCompressed") as? Bool ?? true
     }
 
     var recipe: CompressionRecipe {

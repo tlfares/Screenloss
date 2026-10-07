@@ -78,6 +78,11 @@ final class LibraryStore {
         compressedOriginals.contains(item.id)
     }
 
+    /// A copy this app made, as recorded when it was saved.
+    func isCompressedCopy(_ item: MediaItem) -> Bool {
+        copyLevels[item.id] != nil
+    }
+
     func estimatedSaving(of items: some Sequence<MediaItem>) -> Int64 {
         items.reduce(0) { total, item in
             compressedOriginals.contains(item.id) ? total : total + SavingsEstimator.estimatedSaving(of: item, recipe: recipe, madeAt: copyLevels[item.id])

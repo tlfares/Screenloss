@@ -8,6 +8,7 @@ struct BrowserView: View {
 
     @Environment(LibraryStore.self) private var library
     @Environment(PendingRemovals.self) private var pending
+    @Environment(CompressionSettings.self) private var settings
     @State private var items: [MediaItem] = []
     /// `items`, or only the compressible ones, kept rather than filtered on
     /// every update: a category can hold tens of thousands.
@@ -214,8 +215,13 @@ struct BrowserView: View {
         let selectable = Set(fresh.lazy.filter(isSelectable).map(\.id))
         if !hasLoaded {
             // A category is opened to compress it: start with all of it,
-            // minus originals that already have a copy.
-            if category != .everything { selection = selectable }
+            // minus originals that already have a copy and, unless asked
+            // otherwise, the copies themselves.
+            if category != .everything {
+                selection = settings.skipsCompressed
+                    ? Set(fresh.lazy.filter { isSelectable($0) && !library.isCompressedCopy($0) }.map(\.id))
+                    : selectable
+            }
             hasLoaded = true
         } else {
             selection.formIntersection(selectable)
