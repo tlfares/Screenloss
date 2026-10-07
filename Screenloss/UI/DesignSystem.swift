@@ -199,6 +199,10 @@ struct CollapsibleGlassCard<Content: View>: View {
             // menus (Compression) stuttered as it unfolded.
             content
                 .padding(.top, 18)
+                // Laid out once at its own height, then revealed: given the
+                // growing height frame by frame, text rewrapped as the card
+                // opened and every row was laid out again on each frame.
+                .fixedSize(horizontal: false, vertical: true)
                 .frame(height: isExpanded ? nil : 0, alignment: .top)
                 // Clipped only while folded: open, controls drawn a little
                 // past their frame (a toggle's glass knob) stay whole.
