@@ -200,7 +200,9 @@ struct CollapsibleGlassCard<Content: View>: View {
             content
                 .padding(.top, 18)
                 .frame(height: isExpanded ? nil : 0, alignment: .top)
-                .clipped()
+                // Clipped only while folded: open, controls drawn a little
+                // past their frame (a toggle's glass knob) stay whole.
+                .clipShape(Rectangle().inset(by: isExpanded ? -24 : 0))
                 .opacity(isExpanded ? 1 : 0)
                 .allowsHitTesting(isExpanded)
                 .accessibilityHidden(!isExpanded)
