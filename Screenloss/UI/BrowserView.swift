@@ -201,6 +201,9 @@ struct BrowserView: View {
             }
             .onChange(of: sort) { _, _ in withAnimation(Motion.smooth) { items = sort.sorted(items) } }
         }
+        // Each in its own capsule: sharing one, they sat at opposite ends
+        // of it with a wide gap between.
+        ToolbarSpacer(.fixed, placement: .topBarTrailing)
         ToolbarItem(placement: .topBarTrailing) {
             let eligible = items.filter(isSelectable)
             let allSelected = !eligible.isEmpty && eligible.allSatisfy { selection.contains($0.id) }

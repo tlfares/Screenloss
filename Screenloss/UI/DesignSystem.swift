@@ -195,11 +195,15 @@ struct CollapsibleGlassCard<Content: View>: View {
             .buttonStyle(.plain)
             .accessibilityAddTraits(.isHeader)
 
-            if isExpanded {
-                content
-                    .padding(.top, 18)
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-            }
+            // Kept alive while folded: built only when opening, a card of
+            // menus (Compression) stuttered as it unfolded.
+            content
+                .padding(.top, 18)
+                .frame(height: isExpanded ? nil : 0, alignment: .top)
+                .clipped()
+                .opacity(isExpanded ? 1 : 0)
+                .allowsHitTesting(isExpanded)
+                .accessibilityHidden(!isExpanded)
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
