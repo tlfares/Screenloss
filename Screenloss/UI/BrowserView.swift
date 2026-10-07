@@ -85,7 +85,7 @@ struct BrowserView: View {
                     ContentUnavailableView(
                         "Nothing Here",
                         systemImage: category.symbol,
-                        description: Text(items.isEmpty ? "No \(category.title.lowercased()) in your library." : "No item here can be compressed.")
+                        description: Text(items.isEmpty ? "Nothing in this category in your library." : "No item here can be compressed.")
                     )
                     .padding(.top, 40)
                 }
@@ -117,7 +117,7 @@ struct BrowserView: View {
 
     private func tap(_ item: MediaItem) {
         if library.isCompressedOriginal(item) {
-            showHint("Already compressed. Remove the originals from the Library tab.")
+            showHint(String(localized: "Already compressed. Remove the originals from the Library tab."))
             return
         }
         guard item.isEligible else {
@@ -179,7 +179,7 @@ struct BrowserView: View {
                 showsReview = true
             } label: {
                 VStack(spacing: 2) {
-                    Text(totals.count == 0 ? "Select Items" : "Review \(totals.count.formatted()) \(totals.count == 1 ? "Item" : "Items")")
+                    Text(totals.count == 0 ? "Select Items" : "Review \(totals.count) Items")
                         .font(.headline)
                     if totals.count > 0 {
                         Text("≈ \(ByteFormat.string(totals.saving)) to free")
@@ -258,7 +258,7 @@ private struct SelectionSummary: View {
     var body: some View {
         GlassCard(padding: 16) {
             HStack(spacing: 12) {
-                Figure(value: "\(count.formatted())", label: "of \(total.formatted()) selected")
+                Figure(value: "\(count.formatted())", label: "of \(total) selected")
                 Figure(value: ByteFormat.string(size), label: "Selected size")
                 Figure(value: "≈ \(ByteFormat.string(saving))", label: "To free", tinted: true)
             }

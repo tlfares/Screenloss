@@ -24,7 +24,7 @@ nonisolated enum ItemProcessor {
         var created: [URL] = []
         do {
             if let blocker = item.blocker { return .skipped(blocker.explanation) }
-            guard let asset = LibraryWriter.asset(for: item.id) else { return .failed("It's no longer in the library.") }
+            guard let asset = LibraryWriter.asset(for: item.id) else { return .failed(String(localized: "It's no longer in the library.")) }
             try Task.checkCancellation()
             let base = baseName(of: item)
 

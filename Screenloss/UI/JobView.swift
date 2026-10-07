@@ -50,7 +50,7 @@ struct JobView: View {
                         Button {
                             showsIssues = true
                         } label: {
-                            Label("See \(job.failures.count == 1 ? "1 issue" : "\(job.failures.count.formatted()) issues")", systemImage: "exclamationmark.triangle")
+                            Label("See \(job.failures.count) issues", systemImage: "exclamationmark.triangle")
                                 .font(.subheadline.weight(.medium))
                         }
                         .buttonStyle(.glass)
@@ -93,8 +93,8 @@ struct JobView: View {
     }
 
     private var title: String {
-        if job.isFinished { return job.wasCancelled ? "Stopped" : "Done" }
-        return job.phase == .needsSpace ? "Paused" : "Compressing"
+        if job.isFinished { return job.wasCancelled ? String(localized: "Stopped") : String(localized: "Done") }
+        return job.phase == .needsSpace ? String(localized: "Paused") : String(localized: "Compressing")
     }
 
     @ViewBuilder
@@ -141,7 +141,7 @@ struct JobView: View {
                         Button {
                             Task { await remove() }
                         } label: {
-                            Label("Remove \(pending.count.formatted()) \(pending.count == 1 ? "Original" : "Originals")", systemImage: "trash")
+                            Label("Remove \(pending.count) Originals", systemImage: "trash")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.glassProminent)
@@ -154,9 +154,9 @@ struct JobView: View {
 
     private var removalMessage: String {
         switch removal {
-        case .declined: "Nothing was removed. You can do it any time from the Library tab."
+        case .declined: String(localized: "Nothing was removed. You can do it any time from the Library tab.")
         case .failed(let reason): reason
-        default: "Their copies are in your library. Removing them gives back \(ByteFormat.string(pending.saving))."
+        default: String(localized: "Their copies are in your library. Removing them gives back \(ByteFormat.string(pending.saving)).")
         }
     }
 
@@ -238,7 +238,7 @@ private struct NeedsSpaceCard: View {
                     Button {
                         Task { _ = await pending.removeAll() }
                     } label: {
-                        Label("Remove \(pending.count.formatted()) Originals", systemImage: "trash")
+                        Label("Remove \(pending.count) Originals", systemImage: "trash")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.glassProminent)

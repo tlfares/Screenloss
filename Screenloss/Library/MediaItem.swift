@@ -13,31 +13,31 @@ nonisolated enum Blocker: String, Codable, Sendable {
 
     var label: String {
         switch self {
-        case .raw: "RAW"
-        case .animated: "Animated"
-        case .portrait: "Portrait"
-        case .spatial: "Spatial"
-        case .slowMotion: "Slo-mo"
-        case .cinematic: "Cinematic"
-        case .burst: "Burst"
-        case .loopingLivePhoto: "Loop or Bounce"
-        case .readOnly: "Read-only"
-        case .unknownFormat: "Unsupported"
+        case .raw: String(localized: "RAW")
+        case .animated: String(localized: "Animated")
+        case .portrait: String(localized: "Portrait")
+        case .spatial: String(localized: "Spatial")
+        case .slowMotion: String(localized: "Slo-mo")
+        case .cinematic: String(localized: "Cinematic")
+        case .burst: String(localized: "Burst")
+        case .loopingLivePhoto: String(localized: "Loop or Bounce")
+        case .readOnly: String(localized: "Read-only")
+        case .unknownFormat: String(localized: "Unsupported")
         }
     }
 
     var explanation: String {
         switch self {
-        case .raw: "RAW files keep sensor data that HEIF can't hold."
-        case .animated: "Re-encoding would keep only the first frame."
-        case .portrait: "Depth data and Portrait edits would be lost."
-        case .spatial: "Spatial depth would be lost."
-        case .slowMotion: "The slow-motion ramp couldn't be edited anymore."
-        case .cinematic: "Cinematic focus data would be lost."
-        case .burst: "It would be pulled out of its burst."
-        case .loopingLivePhoto: "Its Loop or Bounce effect would be lost."
-        case .readOnly: "This item can't be changed from apps."
-        case .unknownFormat: "This file format isn't supported."
+        case .raw: String(localized: "RAW files keep sensor data that HEIF can't hold.")
+        case .animated: String(localized: "Re-encoding would keep only the first frame.")
+        case .portrait: String(localized: "Depth data and Portrait edits would be lost.")
+        case .spatial: String(localized: "Spatial depth would be lost.")
+        case .slowMotion: String(localized: "The slow-motion ramp couldn't be edited anymore.")
+        case .cinematic: String(localized: "Cinematic focus data would be lost.")
+        case .burst: String(localized: "It would be pulled out of its burst.")
+        case .loopingLivePhoto: String(localized: "Its Loop or Bounce effect would be lost.")
+        case .readOnly: String(localized: "This item can't be changed from apps.")
+        case .unknownFormat: String(localized: "This file format isn't supported.")
         }
     }
 }
@@ -101,8 +101,8 @@ nonisolated enum MediaFormat: String, Sendable {
         case .raw: "RAW"
         case .mov: "MOV"
         case .mp4: "MP4"
-        case .otherImage: "Image"
-        case .otherVideo: "Video"
+        case .otherImage: String(localized: "Image")
+        case .otherVideo: String(localized: "Video")
         }
     }
 

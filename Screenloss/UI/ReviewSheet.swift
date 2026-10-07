@@ -76,7 +76,7 @@ struct ReviewSheet: View {
                     dismiss()
                     jobs.start(items, library: library, pending: pending)
                 } label: {
-                    Text("Compress \(run.count.formatted()) \(run.count == 1 ? "Item" : "Items")")
+                    Text("Compress \(run.count) Items")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 6)
@@ -105,7 +105,7 @@ struct ReviewSheet: View {
                 }
                 SavingsBar(total: size, saving: saving)
                 if skipped > 0 {
-                    Text("\(skipped.formatted()) already compressed and waiting for their originals to be removed \(skipped == 1 ? "is" : "are") left out.")
+                    Text("\(skipped) items already compressed and waiting for their originals to be removed are left out.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
@@ -116,7 +116,7 @@ struct ReviewSheet: View {
     private func photoSettings(sample: MediaItem) -> some View {
         @Bindable var settings = settings
         return VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(photos.count == 1 ? "1 Photo" : "\(photos.count.formatted()) Photos", symbol: "photo")
+            sectionTitle("\(photos.count) Photos", symbol: "photo")
             GlassSegmentedPicker("Photo quality", options: QualityLevel.allCases, selection: $settings.photoQuality, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.photoQuality.photoDescription)
                 .font(.footnote)
@@ -158,7 +158,7 @@ struct ReviewSheet: View {
         @Bindable var settings = settings
         let count = livePhotos.count
         return VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(count == 1 ? "1 Live Photo" : "\(count.formatted()) Live Photos", symbol: "livephoto")
+            sectionTitle("\(count) Live Photos", symbol: "livephoto")
             GlassSegmentedPicker("Live Photos", options: LivePhotoMode.allCases, selection: $settings.livePhotoMode, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.livePhotoMode.description)
                 .font(.footnote)
@@ -172,7 +172,7 @@ struct ReviewSheet: View {
     private var videoSettings: some View {
         @Bindable var settings = settings
         return VStack(alignment: .leading, spacing: 14) {
-            sectionTitle(videos.count == 1 ? "1 Video" : "\(videos.count.formatted()) Videos", symbol: "video")
+            sectionTitle("\(videos.count) Videos", symbol: "video")
             GlassSegmentedPicker("Video quality", options: QualityLevel.allCases, selection: $settings.videoQuality, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.videoQuality.videoDescription)
                 .font(.footnote)
@@ -196,7 +196,7 @@ struct ReviewSheet: View {
         }
     }
 
-    private func sectionTitle(_ title: String, symbol: String) -> some View {
+    private func sectionTitle(_ title: LocalizedStringResource, symbol: String) -> some View {
         Label(title, systemImage: symbol)
             .font(.headline)
             .padding(.horizontal, 4)

@@ -15,14 +15,14 @@ nonisolated enum TranscodeError: LocalizedError, Equatable {
 
     var errorDescription: String? {
         switch self {
-        case .unreadable: "The original couldn't be read."
-        case .encoderUnavailable: "This device can't encode that format."
-        case .encodingFailed: "Encoding failed."
-        case .verificationFailed: "The new file didn't match the original, so it was discarded."
-        case .alreadyEfficient: "Already in an efficient format."
-        case .noGain: "A smaller file wasn't possible at this quality."
-        case .cancelled: "Cancelled."
-        case .livePhotoMismatch: "Its photo and motion couldn't be matched, so it was left as is."
+        case .unreadable: String(localized: "The original couldn't be read.")
+        case .encoderUnavailable: String(localized: "This device can't encode that format.")
+        case .encodingFailed: String(localized: "Encoding failed.")
+        case .verificationFailed: String(localized: "The new file didn't match the original, so it was discarded.")
+        case .alreadyEfficient: String(localized: "Already in an efficient format.")
+        case .noGain: String(localized: "A smaller file wasn't possible at this quality.")
+        case .cancelled: String(localized: "Cancelled.")
+        case .livePhotoMismatch: String(localized: "Its photo and motion couldn't be matched, so it was left as is.")
         case .writerFailed(let reason): reason
         }
     }

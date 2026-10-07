@@ -499,8 +499,8 @@ final class AssetGridCell: UICollectionViewCell {
         CATransaction.commit()
         contentView.alpha = item.isEligible ? 1 : 0.45
 
-        accessibilityLabel = "\(item.kind == .video ? "Video" : "Photo"), \(item.format.label), \(ByteFormat.string(item.size))"
-        accessibilityValue = isSelected ? "Selected" : nil
+        accessibilityLabel = "\(item.kind == .video ? String(localized: "Video") : String(localized: "Photo")), \(item.format.label), \(ByteFormat.string(item.size))"
+        accessibilityValue = isSelected ? String(localized: "Selected") : nil
         accessibilityTraits = isSelected ? [.button, .selected] : .button
         setNeedsLayout()
     }

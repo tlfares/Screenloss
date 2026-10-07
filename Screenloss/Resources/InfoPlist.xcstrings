@@ -1,0 +1,19 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "CFBundleDisplayName": {
+      "shouldTranslate": false
+    },
+    "NSPhotoLibraryUsageDescription": {
+      "localizations": {
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenloss lit vos photos et vidéos pour les compresser, puis enregistre les copies plus légères dans votre photothèque. Rien ne quitte votre iPhone."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

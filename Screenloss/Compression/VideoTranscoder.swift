@@ -196,10 +196,10 @@ nonisolated final class VideoTranscoder: @unchecked Sendable {
         }
         if cancelled { throw TranscodeError.cancelled }
 
-        guard reader.startReading() else { throw TranscodeError.writerFailed(reader.error?.localizedDescription ?? "Reading failed.") }
+        guard reader.startReading() else { throw TranscodeError.writerFailed(reader.error?.localizedDescription ?? String(localized: "Reading failed.")) }
         guard writer.startWriting() else {
             reader.cancelReading()
-            throw TranscodeError.writerFailed(writer.error?.localizedDescription ?? "Writing failed.")
+            throw TranscodeError.writerFailed(writer.error?.localizedDescription ?? String(localized: "Writing failed."))
         }
         writer.startSession(atSourceTime: .zero)
 
@@ -212,7 +212,7 @@ nonisolated final class VideoTranscoder: @unchecked Sendable {
             throw TranscodeError.cancelled
         }
         if reader.status == .failed || writer.status == .failed {
-            let reason = (writer.error ?? reader.error)?.localizedDescription ?? "Encoding failed."
+            let reason = (writer.error ?? reader.error)?.localizedDescription ?? String(localized: "Encoding failed.")
             if writer.status == .writing { writer.cancelWriting() }
             try? FileManager.default.removeItem(at: outputURL)
             throw TranscodeError.writerFailed(reason)
@@ -220,7 +220,7 @@ nonisolated final class VideoTranscoder: @unchecked Sendable {
         await writer.finishWriting()
         guard writer.status == .completed else {
             try? FileManager.default.removeItem(at: outputURL)
-            throw TranscodeError.writerFailed(writer.error?.localizedDescription ?? "Encoding failed.")
+            throw TranscodeError.writerFailed(writer.error?.localizedDescription ?? String(localized: "Encoding failed."))
         }
 
         try await verify(expectedDuration: duration, audioTrackCount: audioTracks.count, metadataTrackCount: metadataTracks.count)

@@ -70,8 +70,8 @@ final class CompressionJob: Identifiable {
         try? FileManager.default.createDirectory(at: workDirectory, withIntermediateDirectories: true)
         UIApplication.shared.isIdleTimerDisabled = true
         background.begin(
-            title: "Compressing \(items.count.formatted()) \(items.count == 1 ? "item" : "items")",
-            subtitle: "Starting…"
+            title: String(localized: "Compressing \(items.count) items"),
+            subtitle: String(localized: "Starting…")
         ) { [weak self] in self?.cancel() }
         task = Task { await run() }
     }
@@ -180,7 +180,7 @@ final class CompressionJob: Identifiable {
                     originalBytes += item.size
                     copyBytes += size
                 } else {
-                    failures.append(Issue(item: item, reason: "Photos didn't accept the new file."))
+                    failures.append(Issue(item: item, reason: String(localized: "Photos didn't accept the new file.")))
                     try? FileManager.default.removeItem(at: replacement.fileURL)
                     if let paired = replacement.pairedVideoURL { try? FileManager.default.removeItem(at: paired) }
                 }
@@ -196,7 +196,7 @@ final class CompressionJob: Identifiable {
         currentFraction = 0
         background.update(
             progress: fractionCompleted,
-            subtitle: "\(processedCount.formatted()) of \(total.formatted()) · \(ByteFormat.string(saving)) saved"
+            subtitle: String(localized: "\(processedCount.formatted()) of \(total.formatted()) · \(ByteFormat.string(saving)) saved")
         )
     }
 
@@ -211,7 +211,7 @@ final class CompressionJob: Identifiable {
         let needed = batch.reduce(Int64(0)) { $0 + $1.size } + 150_000_000
         while Self.availableSpace() < needed {
             phase = .needsSpace
-            background.update(progress: fractionCompleted, subtitle: "Waiting for free space")
+            background.update(progress: fractionCompleted, subtitle: String(localized: "Waiting for free space"))
             let proceed = await withCheckedContinuation { spaceContinuation = $0 }
             phase = .running
             guard proceed, !Task.isCancelled else { return false }

@@ -19,14 +19,14 @@ enum MediaCategory: String, CaseIterable, Identifiable, Hashable {
 
     var title: String {
         switch self {
-        case .screenshots: "Screenshots"
-        case .screenRecordings: "Screen Recordings"
-        case .photos: "Photos"
-        case .livePhotos: "Live Photos"
-        case .videos: "Videos"
-        case .legacyImages: "JPEG & PNG"
-        case .largeFiles: "Large Files"
-        case .everything: "All Items"
+        case .screenshots: String(localized: "Screenshots")
+        case .screenRecordings: String(localized: "Screen Recordings")
+        case .photos: String(localized: "Photos")
+        case .livePhotos: String(localized: "Live Photos")
+        case .videos: String(localized: "Videos")
+        case .legacyImages: String(localized: "JPEG & PNG")
+        case .largeFiles: String(localized: "Large Files")
+        case .everything: String(localized: "All Items")
         }
     }
 
@@ -45,14 +45,14 @@ enum MediaCategory: String, CaseIterable, Identifiable, Hashable {
 
     var subtitle: String {
         switch self {
-        case .screenshots: "Saved as PNG, often several MB each"
-        case .screenRecordings: "Long recordings add up fast"
-        case .photos: "Camera photos and saved images"
-        case .livePhotos: "Keep them Live, or make them still"
-        case .videos: "Everything you've filmed or saved"
-        case .legacyImages: "Images not yet in HEIF"
-        case .largeFiles: "Items over \(ByteFormat.string(MediaCategory.largeFileThreshold))"
-        case .everything: "Pick exactly what to compress"
+        case .screenshots: String(localized: "Saved as PNG, often several MB each")
+        case .screenRecordings: String(localized: "Long recordings add up fast")
+        case .photos: String(localized: "Camera photos and saved images")
+        case .livePhotos: String(localized: "Keep them Live, or make them still")
+        case .videos: String(localized: "Everything you've filmed or saved")
+        case .legacyImages: String(localized: "Images not yet in HEIF")
+        case .largeFiles: String(localized: "Items over \(ByteFormat.string(MediaCategory.largeFileThreshold))")
+        case .everything: String(localized: "Pick exactly what to compress")
         }
     }
 
@@ -87,9 +87,9 @@ enum BrowserSort: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .largest: "Largest First"
-        case .newest: "Newest First"
-        case .oldest: "Oldest First"
+        case .largest: String(localized: "Largest First")
+        case .newest: String(localized: "Newest First")
+        case .oldest: String(localized: "Oldest First")
         }
     }
 

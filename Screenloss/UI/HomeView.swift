@@ -72,8 +72,8 @@ private struct OverviewCard: View {
                     let progress = library.scanProgress
                     ProgressView(value: Double(progress.done), total: Double(max(progress.total, 1)))
                     Text(progress.total > 0
-                         ? "Reading your library… \(progress.done.formatted()) of \(progress.total.formatted())"
-                         : "Reading your library…")
+                         ? String(localized: "Reading your library… \(progress.done.formatted()) of \(progress.total.formatted())")
+                         : String(localized: "Reading your library…"))
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .contentTransition(.numericText())
@@ -85,11 +85,11 @@ private struct OverviewCard: View {
     }
 
     private func subtitle(_ all: LibraryStore.Summary) -> String {
-        guard library.hasScanned else { return "Looking at your photos and videos" }
-        return "\(all.count.formatted()) items, \(ByteFormat.string(all.size)) in all"
+        guard library.hasScanned else { return String(localized: "Looking at your photos and videos") }
+        return String(localized: "\(all.count) items, \(ByteFormat.string(all.size)) in all")
     }
 
-    private func legend(_ title: String, _ value: String, dot: Color) -> some View {
+    private func legend(_ title: LocalizedStringResource, _ value: String, dot: Color) -> some View {
         HStack(spacing: 6) {
             Circle().fill(dot).frame(width: 8, height: 8)
             Text(title).foregroundStyle(.secondary)
@@ -138,11 +138,11 @@ struct CategoryTile: View {
         .contentShape(.rect(cornerRadius: 28))
         .glassEffect(.regular.interactive(), in: .rect(cornerRadius: 28))
         .accessibilityElement(children: .combine)
-        .accessibilityHint(summary.map { "About \(ByteFormat.string($0.estimatedSaving)) can be freed" } ?? "")
+        .accessibilityHint(summary.map { String(localized: "About \(ByteFormat.string($0.estimatedSaving)) can be freed") } ?? "")
     }
 
     private var detail: String {
-        guard let summary, summary.count > 0 else { return summary == nil ? "…" : "None" }
+        guard let summary, summary.count > 0 else { return summary == nil ? "…" : String(localized: "None") }
         return "\(summary.count.formatted()) · \(ByteFormat.string(summary.size))"
     }
 }
@@ -159,7 +159,7 @@ private struct PendingRemovalCard: View {
                 Label("Originals to remove", systemImage: "trash")
                     .font(.headline)
                     .foregroundStyle(.tint)
-                Text("\(pending.count.formatted()) smaller \(pending.count == 1 ? "copy is" : "copies are") already in your library. Remove the originals to get \(ByteFormat.string(pending.saving)) back.")
+                Text("\(pending.count) smaller copies are already in your library. Remove the originals to get \(ByteFormat.string(pending.saving)) back.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 if let message {
@@ -186,7 +186,7 @@ private struct PendingRemovalCard: View {
             message = nil
             if freed > 0 { showsEmptyTip = true }
         case .declined:
-            message = "Nothing was removed. Your originals and their copies are both still in the library."
+            message = String(localized: "Nothing was removed. Your originals and their copies are both still in the library.")
         case .failed(let reason):
             message = reason
         }
@@ -243,7 +243,7 @@ struct RecentlyDeletedTip: View {
         .presentationBackground(Color.screenBackground)
     }
 
-    private func step(_ number: Int, _ text: String) -> some View {
+    private func step(_ number: Int, _ text: LocalizedStringResource) -> some View {
         HStack(spacing: 12) {
             Text("\(number)")
                 .font(.footnote.weight(.bold))

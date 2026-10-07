@@ -55,7 +55,7 @@ struct ComparisonCard: View {
             original = nil
             preview = nil
             guard let data = await Self.load(item.id) else {
-                preview = Preview(image: nil, size: nil, note: "The original couldn't be loaded.")
+                preview = Preview(image: nil, size: nil, note: String(localized: "The original couldn't be loaded."))
                 return
             }
             source = data
@@ -79,7 +79,7 @@ struct ComparisonCard: View {
         if let note = preview?.note { return note }
         guard let size = preview?.size else { return "\(before) → …" }
         let percent = source.map { Int((1 - Double(size) / Double($0.count)) * 100) } ?? 0
-        return "\(before) → \(ByteFormat.string(size)) · \(percent)% smaller"
+        return String(localized: "\(before) → \(ByteFormat.string(size)) · \(percent)% smaller")
     }
 
     @ViewBuilder
@@ -90,7 +90,7 @@ struct ComparisonCard: View {
                 Color.screenBackground
                 if let original {
                     picture(original, in: size)
-                        .overlay(alignment: .topLeading) { tag("Original").padding(10) }
+                        .overlay(alignment: .topLeading) { tag(String(localized: "Original")).padding(10) }
                 }
                 if let image = preview?.image {
                     picture(image, in: size)
@@ -182,19 +182,19 @@ struct ComparisonCard: View {
             if item.isLivePhoto {
                 // The video decides as much as the photo here.
                 let note: String? = switch recipe.livePhotoMode {
-                case .still: kept ? "Photo kept as is, its motion is removed" : nil
-                case .keepLive: kept ? "Photo kept as is, only its motion is compressed" : nil
+                case .still: kept ? String(localized: "Photo kept as is, its motion is removed") : nil
+                case .keepLive: kept ? String(localized: "Photo kept as is, only its motion is compressed") : nil
                 }
                 return Preview(image: image, size: kept ? Int64(data.count) : size, note: note)
             }
-            return Preview(image: image, size: size, note: kept ? "Not enough smaller: this one would be kept as is" : nil)
+            return Preview(image: image, size: size, note: kept ? String(localized: "Not enough smaller: this one would be kept as is") : nil)
         } catch let error as TranscodeError where error == .alreadyEfficient {
             if item.isLivePhoto {
                 return Preview(image: UIImage(data: data), size: nil, note: recipe.livePhotoMode == .still
-                    ? "Photo kept as is, its motion is removed"
-                    : "Photo and motion kept as they are at this level")
+                    ? String(localized: "Photo kept as is, its motion is removed")
+                    : String(localized: "Photo and motion kept as they are at this level"))
             }
-            return Preview(image: UIImage(data: data), size: nil, note: "Already HEIF: kept as is at this level")
+            return Preview(image: UIImage(data: data), size: nil, note: String(localized: "Already HEIF: kept as is at this level"))
         } catch {
             return Preview(image: nil, size: nil, note: error.localizedDescription)
         }

@@ -13,10 +13,10 @@ nonisolated enum QualityLevel: String, CaseIterable, Identifiable, Codable, Send
 
     var title: String {
         switch self {
-        case .convert: "Convert"
-        case .high: "High"
-        case .balanced: "Balanced"
-        case .compact: "Compact"
+        case .convert: String(localized: "Convert")
+        case .high: String(localized: "High")
+        case .balanced: String(localized: "Balanced")
+        case .compact: String(localized: "Compact")
         }
     }
 
@@ -31,19 +31,19 @@ nonisolated enum QualityLevel: String, CaseIterable, Identifiable, Codable, Send
 
     var photoDescription: String {
         switch self {
-        case .convert: "Same quality in HEIF. Best for screenshots you zoom into."
-        case .high: "Indistinguishable from the original on iPhone."
-        case .balanced: "Smaller files, fine detail softens on close zoom."
-        case .compact: "Smallest files, for things you only glance at."
+        case .convert: String(localized: "Same quality in HEIF. Best for screenshots you zoom into.")
+        case .high: String(localized: "Indistinguishable from the original on iPhone.")
+        case .balanced: String(localized: "Smaller files, fine detail softens on close zoom.")
+        case .compact: String(localized: "Smallest files, for things you only glance at.")
         }
     }
 
     var videoDescription: String {
         switch self {
-        case .convert: "Same quality in HEVC, roughly half the size of H.264."
-        case .high: "Indistinguishable from the original on iPhone."
-        case .balanced: "Noticeably smaller, still sharp on a phone."
-        case .compact: "Smallest files, softer on a big screen."
+        case .convert: String(localized: "Same quality in HEVC, roughly half the size of H.264.")
+        case .high: String(localized: "Indistinguishable from the original on iPhone.")
+        case .balanced: String(localized: "Noticeably smaller, still sharp on a phone.")
+        case .compact: String(localized: "Smallest files, softer on a big screen.")
         }
     }
 
@@ -95,7 +95,7 @@ nonisolated enum PhotoSizeLimit: Int, CaseIterable, Identifiable, Codable, Senda
     case px2048 = 2048
 
     var id: Int { rawValue }
-    var title: String { self == .original ? "Original" : "\(rawValue) px" }
+    var title: String { self == .original ? String(localized: "Original") : "\(rawValue) px" }
     var maxPixels: Int? { self == .original ? nil : rawValue }
 }
 
@@ -110,7 +110,7 @@ nonisolated enum VideoSizeLimit: Int, CaseIterable, Identifiable, Codable, Senda
 
     var title: String {
         switch self {
-        case .original: "Original"
+        case .original: String(localized: "Original")
         case .uhd: "4K"
         case .fullHD: "1080p"
         case .hd: "720p"
@@ -132,8 +132,8 @@ nonisolated enum LivePhotoMode: String, CaseIterable, Identifiable, Codable, Sen
 
     var title: String {
         switch self {
-        case .keepLive: "Keep Live"
-        case .still: "Make Still"
+        case .keepLive: String(localized: "Keep Live")
+        case .still: String(localized: "Make Still")
         }
     }
 
@@ -146,8 +146,8 @@ nonisolated enum LivePhotoMode: String, CaseIterable, Identifiable, Codable, Sen
 
     var description: String {
         switch self {
-        case .keepLive: "Photo and motion are both compressed. They still play when you press and hold."
-        case .still: "Only the photo is kept, as a classic photo. Removing the motion alone saves about half."
+        case .keepLive: String(localized: "Photo and motion are both compressed. They still play when you press and hold.")
+        case .still: String(localized: "Only the photo is kept, as a classic photo. Removing the motion alone saves about half.")
         }
     }
 }

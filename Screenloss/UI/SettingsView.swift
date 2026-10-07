@@ -140,7 +140,7 @@ struct SettingsView: View {
         return build.map { "\(name) \(version) (\($0))" } ?? "\(name) \(version)"
     }()
 
-    private func row<Control: View>(_ title: String, @ViewBuilder control: () -> Control) -> some View {
+    private func row<Control: View>(_ title: LocalizedStringResource, @ViewBuilder control: () -> Control) -> some View {
         HStack {
             Text(title)
             Spacer()

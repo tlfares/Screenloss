@@ -20,10 +20,10 @@ enum AppTint: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .mint: "Mint"
-        case .blue: "Blue"
-        case .indigo: "Indigo"
-        case .yellow: "Yellow"
+        case .mint: String(localized: "Mint")
+        case .blue: String(localized: "Blue")
+        case .indigo: String(localized: "Indigo")
+        case .yellow: String(localized: "Yellow")
         }
     }
 
@@ -53,7 +53,7 @@ enum AppTint: String, CaseIterable, Identifiable {
 
     /// The home screen icon drawn in this tint. Mint is the primary icon.
     var iconName: String? {
-        self == .mint ? nil : "AppIcon-\(title)"
+        self == .mint ? nil : "AppIcon-\(rawValue.capitalized)"
     }
 
     /// iOS confirms each change with its own alert, so it's only asked
@@ -77,9 +77,9 @@ enum AppAppearance: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .light: "Light"
-        case .dark: "Dark"
-        case .system: "System"
+        case .light: String(localized: "Light")
+        case .dark: String(localized: "Dark")
+        case .system: String(localized: "System")
         }
     }
 
@@ -170,7 +170,7 @@ struct GlassCard<Content: View>: View {
 }
 
 struct CollapsibleGlassCard<Content: View>: View {
-    let title: String
+    let title: LocalizedStringResource
     let systemImage: String
     @Binding var isExpanded: Bool
     @ViewBuilder var content: Content
@@ -225,7 +225,7 @@ struct GlassSegmentedPicker<Value: Hashable>: View {
     @Binding var selection: Value
     let title: (Value) -> String
     let symbol: ((Value) -> String)?
-    let label: String
+    let label: LocalizedStringResource
     let commitsWhenSettled: Bool
 
     /// What the capsule shows, ahead of `selection` until it settles.
@@ -243,7 +243,7 @@ struct GlassSegmentedPicker<Value: Hashable>: View {
     private static var inset: CGFloat { 4 }
     private static var settle: Animation { .spring(response: 0.32, dampingFraction: 0.86) }
 
-    init(_ label: String, options: [Value], selection: Binding<Value>, title: @escaping (Value) -> String, symbol: ((Value) -> String)? = nil, commitsWhenSettled: Bool = false) {
+    init(_ label: LocalizedStringResource, options: [Value], selection: Binding<Value>, title: @escaping (Value) -> String, symbol: ((Value) -> String)? = nil, commitsWhenSettled: Bool = false) {
         self.label = label
         self.options = options
         _selection = selection
@@ -311,7 +311,7 @@ struct GlassSegmentedPicker<Value: Hashable>: View {
         }
         .sensoryFeedback(.selection, trigger: highlighted)
         .accessibilityElement(children: .contain)
-        .accessibilityLabel(label)
+        .accessibilityLabel(Text(label))
     }
 
     private var drag: some Gesture {
@@ -375,7 +375,7 @@ struct GlassSegmentedPicker<Value: Hashable>: View {
 /// A big number with a caption under it.
 struct Figure: View {
     let value: String
-    let label: String
+    let label: LocalizedStringResource
     var tinted = false
 
     var body: some View {
