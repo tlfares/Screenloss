@@ -114,7 +114,7 @@ struct ReviewSheet: View {
         @Bindable var settings = settings
         return VStack(alignment: .leading, spacing: 14) {
             sectionTitle(photos.count == 1 ? "1 Photo" : "\(photos.count.formatted()) Photos", symbol: "photo")
-            GlassSegmentedPicker("Photo quality", options: QualityLevel.allCases, selection: $settings.photoQuality, title: \.title, symbol: \.symbol)
+            GlassSegmentedPicker("Photo quality", options: QualityLevel.allCases, selection: $settings.photoQuality, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.photoQuality.photoDescription)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
@@ -156,7 +156,7 @@ struct ReviewSheet: View {
         let count = livePhotos.count
         return VStack(alignment: .leading, spacing: 14) {
             sectionTitle(count == 1 ? "1 Live Photo" : "\(count.formatted()) Live Photos", symbol: "livephoto")
-            GlassSegmentedPicker("Live Photos", options: LivePhotoMode.allCases, selection: $settings.livePhotoMode, title: \.title, symbol: \.symbol)
+            GlassSegmentedPicker("Live Photos", options: LivePhotoMode.allCases, selection: $settings.livePhotoMode, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.livePhotoMode.description)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
@@ -170,7 +170,7 @@ struct ReviewSheet: View {
         @Bindable var settings = settings
         return VStack(alignment: .leading, spacing: 14) {
             sectionTitle(videos.count == 1 ? "1 Video" : "\(videos.count.formatted()) Videos", symbol: "video")
-            GlassSegmentedPicker("Video quality", options: QualityLevel.allCases, selection: $settings.videoQuality, title: \.title, symbol: \.symbol)
+            GlassSegmentedPicker("Video quality", options: QualityLevel.allCases, selection: $settings.videoQuality, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
             Text(settings.videoQuality.videoDescription)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
