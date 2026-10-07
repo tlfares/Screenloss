@@ -17,7 +17,10 @@ Native iOS app that shrinks your photo library by converting and compressing scr
 - iOS 26+
 
 ## Install
-Build it from source with Xcode.
+Join the TestFlight beta:
+https://testflight.apple.com/join/rdVQFSwk
+
+Or grab the .ipa from [Releases](https://github.com/tlfares/Screenloss/releases) and sideload it (AltStore, SideStore, Sideloadly…). You can also build it from source with Xcode.
 
 ## Known limitations
 - The "date added" can't be kept: iOS sets it when the new copy is saved.
