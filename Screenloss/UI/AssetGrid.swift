@@ -30,6 +30,9 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
         view.showsVerticalScrollIndicator = false
         view.alwaysBounceVertical = true
         view.contentInsetAdjustmentBehavior = .never
+        // The Review button floats on the grid: no frosted band behind it,
+        // which showed up as a gray zone whenever the button was pressed.
+        view.bottomEdgeEffect.isHidden = true
         view.delegate = coordinator
         view.prefetchDataSource = coordinator
         coordinator.attach(to: view)
@@ -203,7 +206,6 @@ struct AssetGrid<Header: View>: UIViewRepresentable {
             while let current = responder {
                 if let controller = current as? UIViewController {
                     controller.setContentScrollView(view, for: .top)
-                    controller.setContentScrollView(view, for: .bottom)
                     hasClaimedScrollView = true
                     return
                 }
