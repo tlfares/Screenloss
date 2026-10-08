@@ -878,14 +878,7 @@
       }
     },
     "I don't drink coffee, but if you like the app, you can still [buy me a coffee](https://buymeacoffee.com/tlfares).": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Je ne bois pas de café, mais si l’app vous plaît, vous pouvez quand même [m’en offrir un](https://buymeacoffee.com/tlfares)."
-          }
-        }
-      }
+      "shouldTranslate": false
     },
     "Image": {
       "localizations": {
