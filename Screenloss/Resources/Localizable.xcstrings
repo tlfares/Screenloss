@@ -999,6 +999,17 @@
         }
       }
     },
+    "It can't be stored in JPEG XL without loss." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de l’enregistrer en JPEG XL sans perte."
+          }
+        }
+      }
+    },
     "It would be pulled out of its burst." : {
       "localizations" : {
         "fr" : {
@@ -2147,7 +2158,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichiers les plus légers, pour ce qu’on ne fait que survoler."
+            "value" : "Fichiers les plus légers, pour les images qu’on regarde en passant."
           }
         }
       }
@@ -2458,16 +2469,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Votre iPhone est presque plein"
-          }
-        }
-      }
-    },
-    "It can't be stored in JPEG XL without loss." : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impossible de l’enregistrer en JPEG XL sans perte."
           }
         }
       }
