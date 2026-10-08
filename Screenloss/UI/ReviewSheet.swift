@@ -118,7 +118,9 @@ struct ReviewSheet: View {
         return VStack(alignment: .leading, spacing: 14) {
             sectionTitle("\(photos.count) Photos", symbol: "photo")
             GlassSegmentedPicker("Photo quality", options: QualityLevel.allCases, selection: $settings.photoQuality, title: \.title, symbol: \.symbol, commitsWhenSettled: true)
-            Text(settings.photoQuality.photoDescription)
+                .disabled(settings.photoFormat.isLossless)
+                .opacity(settings.photoFormat.isLossless ? 0.4 : 1)
+            Text(settings.photoFormat.isLossless ? String(localized: "Lossless in JPEG XL: the level doesn't apply.") : settings.photoQuality.photoDescription)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 4)
@@ -135,8 +137,14 @@ struct ReviewSheet: View {
                             ForEach(PhotoFormat.allCases) { Text($0.title).tag($0) }
                         }
                         .pickerStyle(.segmented)
-                        .frame(width: 150)
+                        .frame(width: 220)
                     }
+                    Text(settings.photoFormat.note)
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentTransition(.opacity)
+                        .animation(Motion.smooth, value: settings.photoFormat)
                     Divider()
                     HStack {
                         Text("Maximum Size")

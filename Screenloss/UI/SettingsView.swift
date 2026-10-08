@@ -34,11 +34,18 @@ struct SettingsView: View {
                                 ForEach(QualityLevel.allCases) { Text($0.title).tag($0) }
                             }
                         }
+                        .disabled(settings.photoFormat.isLossless)
                         row("Photo Format") {
                             Picker("Photo Format", selection: $settings.photoFormat) {
                                 ForEach(PhotoFormat.allCases) { Text($0.title).tag($0) }
                             }
                         }
+                        Text(settings.photoFormat.note)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .contentTransition(.opacity)
+                            .animation(Motion.smooth, value: settings.photoFormat)
+                        Divider()
                         row("Live Photos") {
                             Picker("Live Photos", selection: $settings.livePhotoMode) {
                                 ForEach(LivePhotoMode.allCases) { Text($0.title).tag($0) }
@@ -111,6 +118,8 @@ struct SettingsView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Everything happens on this iPhone. Nothing is uploaded, no account, no subscription.")
                         Text("Questions, feedback or bug reports: [@rmxptfl](https://x.com/rmxptfl) on X · [tlfares](https://github.com/tlfares) on GitHub, or at the bottom of [tlfares.pages.dev](https://tlfares.pages.dev).")
+                        Text("JPEG XL by [libjxl](https://github.com/tlfares/Screenloss/tree/main/Vendor) (BSD license).")
+                            .foregroundStyle(.secondary)
                         Divider()
                         Text("I don't drink coffee, but if you like the app, you can still [buy me a coffee](https://buymeacoffee.com/tlfares).")
                     }

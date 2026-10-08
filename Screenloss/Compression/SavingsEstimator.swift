@@ -26,6 +26,7 @@ nonisolated enum SavingsEstimator {
     }
 
     private static func photoEstimate(_ item: MediaItem, recipe: CompressionRecipe) -> Double {
+        if recipe.photoFormat.isLossless { return losslessEstimate(item, recipe: recipe) }
         // Share of the source size each level lands on, per source format.
         let ratios: [QualityLevel: Double] = switch item.format {
         case .png, .tiff: item.isScreenshot
@@ -59,6 +60,22 @@ nonisolated enum SavingsEstimator {
             }
         }
         return Double(item.size) * min(1, ratio)
+    }
+
+    /// JPEG XL keeps every pixel: PNGs shrink by about a third, JPEGs by a
+    /// fifth, and HEIF and Live Photos are left as they are.
+    private static func losslessEstimate(_ item: MediaItem, recipe: CompressionRecipe) -> Double {
+        if item.isLivePhoto {
+            return recipe.livePhotoMode == .still ? Double(item.size) * 0.6 : Double(item.size)
+        }
+        let ratio: Double = switch item.format {
+        case .png: item.isScreenshot ? 0.6 : 0.7
+        case .tiff: 0.5
+        case .jpeg: 0.8
+        case .otherImage: 0.8
+        default: 1
+        }
+        return Double(item.size) * ratio
     }
 
     private static func videoEstimate(_ item: MediaItem, recipe: CompressionRecipe) -> Double {

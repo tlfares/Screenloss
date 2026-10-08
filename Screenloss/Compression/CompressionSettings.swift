@@ -82,9 +82,36 @@ nonisolated enum QualityLevel: String, CaseIterable, Identifiable, Codable, Send
 
 nonisolated enum PhotoFormat: String, CaseIterable, Identifiable, Codable, Sendable {
     case heif, jpeg
+    /// Lossless: the quality level doesn't apply.
+    case jxl
 
     var id: String { rawValue }
-    var title: String { self == .heif ? "HEIF" : "JPEG" }
+
+    var title: String {
+        switch self {
+        case .heif: "HEIF"
+        case .jpeg: "JPEG"
+        case .jxl: "JPEG XL"
+        }
+    }
+
+    var fileExtension: String {
+        switch self {
+        case .heif: "HEIC"
+        case .jpeg: "JPG"
+        case .jxl: "JXL"
+        }
+    }
+
+    var isLossless: Bool { self == .jxl }
+
+    var note: String {
+        switch self {
+        case .heif: String(localized: "HEIF always loses a little, even on Convert. That's Apple's encoder: it has no lossless mode. The difference is invisible on a phone.")
+        case .jpeg: String(localized: "JPEG loses a little too, and makes bigger files than HEIF. It opens everywhere.")
+        case .jxl: String(localized: "Lossless: every pixel is kept. Files are bigger than HEIF. iPhone, iPad and Mac open them. Windows, Android and many websites may not. Photos doesn't list them under Screenshots. HEIF photos and Live Photos stay as they are.")
+        }
+    }
 }
 
 /// The longest side a photo is allowed to keep.

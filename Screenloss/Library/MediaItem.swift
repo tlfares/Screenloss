@@ -71,7 +71,7 @@ nonisolated struct MediaItem: Identifiable, Hashable, Sendable {
 }
 
 nonisolated enum MediaFormat: String, Sendable {
-    case png, jpeg, heif, gif, tiff, webp, raw, mov, mp4, otherImage, otherVideo
+    case png, jpeg, heif, jxl, gif, tiff, webp, raw, mov, mp4, otherImage, otherVideo
 
     init(uti: String?, kind: MediaKind) {
         guard let uti, let type = UTType(uti) else {
@@ -81,6 +81,7 @@ nonisolated enum MediaFormat: String, Sendable {
         if type.conforms(to: .png) { self = .png }
         else if type.conforms(to: .jpeg) { self = .jpeg }
         else if type.conforms(to: .heic) || type.conforms(to: .heif) { self = .heif }
+        else if type.identifier == "public.jpeg-xl" { self = .jxl }
         else if type.conforms(to: .gif) { self = .gif }
         else if type.conforms(to: .tiff) { self = .tiff }
         else if type.conforms(to: .webP) { self = .webp }
@@ -95,6 +96,7 @@ nonisolated enum MediaFormat: String, Sendable {
         case .png: "PNG"
         case .jpeg: "JPEG"
         case .heif: "HEIF"
+        case .jxl: "JPEG XL"
         case .gif: "GIF"
         case .tiff: "TIFF"
         case .webp: "WebP"

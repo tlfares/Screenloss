@@ -1,0 +1,7 @@
+module CJXL {
+    header "jxl/encode.h"
+    header "jxl/decode.h"
+    header "jxl/thread_parallel_runner.h"
+    link "c++"
+    export *
+}

@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B10000000000000000000021 /* libjxl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B10000000000000000000020 /* libjxl.xcframework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B10000000000000000000001 /* Screenloss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Screenloss.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000020 /* libjxl.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libjxl.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10000000000000000000021 /* libjxl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				B10000000000000000000002 /* Screenloss */,
+				B10000000000000000000022 /* Vendor */,
 				B10000000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +63,14 @@
 				B10000000000000000000001 /* Screenloss.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B10000000000000000000022 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				B10000000000000000000020 /* libjxl.xcframework */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

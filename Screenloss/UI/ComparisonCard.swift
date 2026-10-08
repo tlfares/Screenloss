@@ -170,7 +170,7 @@ struct ComparisonCard: View {
 
     @concurrent
     private static func encode(_ data: Data, item: MediaItem, recipe: CompressionRecipe) async -> Preview {
-        let url = URL.temporaryDirectory.appending(path: "preview-\(UUID().uuidString).\(recipe.photoFormat == .heif ? "heic" : "jpg")")
+        let url = URL.temporaryDirectory.appending(path: "preview-\(UUID().uuidString).\(recipe.photoFormat.fileExtension.lowercased())")
         defer { try? FileManager.default.removeItem(at: url) }
         do {
             let size = try ImageTranscoder.transcode(.init(
@@ -194,7 +194,9 @@ struct ComparisonCard: View {
                     ? String(localized: "Photo kept as is, its motion is removed")
                     : String(localized: "Photo and motion kept as they are at this level"))
             }
-            return Preview(image: UIImage(data: data), size: nil, note: String(localized: "Already HEIF: kept as is at this level"))
+            return Preview(image: UIImage(data: data), size: nil, note: recipe.photoFormat.isLossless
+                ? String(localized: "Already HEIF: kept as is in lossless mode")
+                : String(localized: "Already HEIF: kept as is at this level"))
         } catch {
             return Preview(image: nil, size: nil, note: error.localizedDescription)
         }

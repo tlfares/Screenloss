@@ -36,7 +36,7 @@ nonisolated enum ItemProcessor {
                 if keepsLive, ImageTranscoder.livePhotoIdentifier(of: data) == nil {
                     throw TranscodeError.livePhotoMismatch
                 }
-                let ext = recipe.photoFormat == .heif ? "HEIC" : "JPG"
+                let ext = recipe.photoFormat.fileExtension
                 let url = workDirectory.appending(path: "\(UUID().uuidString).\(ext)")
                 created.append(url)
                 var still: (url: URL, ext: String, size: Int64)
@@ -131,7 +131,8 @@ nonisolated enum ItemProcessor {
             throw TranscodeError.livePhotoMismatch
         }
         let originalSize = fileSize(original)
-        guard recipe.photoQuality != .convert else { return (original, originalSize) }
+        // Lossless means the motion is left alone too.
+        guard recipe.photoQuality != .convert, !recipe.photoFormat.isLossless else { return (original, originalSize) }
 
         var videoRecipe = recipe
         videoRecipe.videoQuality = recipe.photoQuality

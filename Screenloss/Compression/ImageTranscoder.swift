@@ -11,6 +11,7 @@ nonisolated enum TranscodeError: LocalizedError, Equatable {
     case noGain
     case cancelled
     case livePhotoMismatch
+    case notLossless
     case writerFailed(String)
 
     var errorDescription: String? {
@@ -23,12 +24,13 @@ nonisolated enum TranscodeError: LocalizedError, Equatable {
         case .noGain: String(localized: "A smaller file wasn't possible at this quality.")
         case .cancelled: String(localized: "Cancelled.")
         case .livePhotoMismatch: String(localized: "Its photo and motion couldn't be matched, so it was left as is.")
+        case .notLossless: "It can't be stored in JPEG XL without loss."
         case .writerFailed(let reason): reason
         }
     }
 
     /// Outcomes that leave the original untouched on purpose.
-    var isSkip: Bool { self == .alreadyEfficient || self == .noGain }
+    var isSkip: Bool { self == .alreadyEfficient || self == .noGain || self == .notLossless }
 }
 
 /// Re-encodes a still image with ImageIO. The image is copied from its
@@ -56,6 +58,12 @@ nonisolated enum ImageTranscoder {
     }
 
     static func transcode(_ request: Request, to url: URL) throws -> Int64 {
+        if request.recipe.photoFormat == .jxl {
+            // Live Photos stay HEIF: their pairing lives in Apple's maker
+            // note, which a JPEG XL copy isn't known to carry.
+            if request.expectsLivePhotoIdentifier { throw TranscodeError.alreadyEfficient }
+            return try JXLTranscoder.transcode(request, to: url)
+        }
         guard let source = CGImageSourceCreateWithData(request.data as CFData, [kCGImageSourceShouldCache: false] as CFDictionary),
               CGImageSourceGetCount(source) > 0,
               let sourceType = CGImageSourceGetType(source)
