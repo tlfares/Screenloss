@@ -437,7 +437,14 @@
       }
     },
     "Already HEIF: kept as is in lossless mode" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà en HEIF : conservée telle quelle en mode sans perte"
+          }
+        }
+      }
     },
     "Already in an efficient format." : {
       "localizations" : {
@@ -880,7 +887,14 @@
       }
     },
     "HEIF always loses a little, even on Convert. That's Apple's encoder: it has no lossless mode. The difference is invisible on a phone." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le HEIF perd toujours un peu, même en Convertir. C’est l’encodeur d’Apple : il n’a pas de mode sans perte. La différence est invisible sur un téléphone."
+          }
+        }
+      }
     },
     "High" : {
       "localizations" : {
@@ -1066,10 +1080,24 @@
       }
     },
     "JPEG loses a little too, and makes bigger files than HEIF. It opens everywhere." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le JPEG perd aussi un peu, et donne des fichiers plus lourds que le HEIF. Il s’ouvre partout."
+          }
+        }
+      }
     },
     "JPEG XL by [libjxl](https://github.com/tlfares/Screenloss/tree/main/Vendor) (BSD license)." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JPEG XL par [libjxl](https://github.com/tlfares/Screenloss/tree/main/Vendor) (licence BSD)."
+          }
+        }
+      }
     },
     "Keep a copy only if" : {
       "localizations" : {
@@ -1232,10 +1260,24 @@
       }
     },
     "Lossless in JPEG XL: the level doesn't apply." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans perte en JPEG XL : le niveau ne s’applique pas."
+          }
+        }
+      }
     },
     "Lossless: every pixel is kept. Files are bigger than HEIF. iPhone, iPad and Mac open them. Windows, Android and many websites may not. Photos doesn't list them under Screenshots. HEIF photos and Live Photos stay as they are." : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans perte : chaque pixel est conservé. Les fichiers sont plus lourds qu’en HEIF. iPhone, iPad et Mac les ouvrent. Windows, Android et beaucoup de sites peut-être pas. Photos ne les classe pas dans Captures d’écran. Les photos HEIF et les Live Photos restent telles quelles."
+          }
+        }
+      }
     },
     "Make room without losing a thing" : {
       "localizations" : {
@@ -2416,6 +2458,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Votre iPhone est presque plein"
+          }
+        }
+      }
+    },
+    "It can't be stored in JPEG XL without loss." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de l’enregistrer en JPEG XL sans perte."
           }
         }
       }
