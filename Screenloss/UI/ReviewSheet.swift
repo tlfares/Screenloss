@@ -3,7 +3,7 @@ import SwiftUI
 /// The last stop before a run: how hard to compress, what that looks like
 /// on a real item, and what happens to the originals.
 struct ReviewSheet: View {
-    let items: [MediaItem]
+    let plan: Plan
 
     @Environment(\.dismiss) private var dismiss
     @Environment(LibraryStore.self) private var library
@@ -11,24 +11,46 @@ struct ReviewSheet: View {
     @Environment(JobCenter.self) private var jobs
     @Environment(CompressionSettings.self) private var settings
 
-    /// Originals that already have a copy are left out: a second copy
-    /// would only duplicate it.
-    private var runItems: [MediaItem] {
-        let done = pending.originalIDs
-        return items.filter { $0.isEligible && !done.contains($0.id) }
+    /// The estimate for the current settings, worked out off the main actor
+    /// so the bar and figures can animate without a stall.
+    @State private var saving: Int64?
+
+    /// What a run would cover, sorted once when the sheet is opened.
+    struct Plan: Identifiable {
+        let id = UUID()
+        let run: [MediaItem]
+        let skipped: Int
+        let size: Int64
+        let photos: [MediaItem]
+        let videos: [MediaItem]
+        let livePhotos: [MediaItem]
+        let largestPhoto: MediaItem?
+
+        /// Originals that already have a copy are left out: a second copy
+        /// would only duplicate it.
+        init(selected: [MediaItem], excluding done: Set<String>) {
+            run = selected.filter { $0.isEligible && !done.contains($0.id) }
+            skipped = selected.count - run.count
+            size = run.reduce(0) { $0 + $1.size }
+            photos = run.filter { $0.kind == .photo }
+            videos = run.filter { $0.kind == .video }
+            livePhotos = run.filter(\.isLivePhoto)
+            largestPhoto = photos.max { $0.size < $1.size }
+        }
     }
 
-    private var photos: [MediaItem] { runItems.filter { $0.kind == .photo } }
-    private var videos: [MediaItem] { runItems.filter { $0.kind == .video } }
-    private var livePhotos: [MediaItem] { runItems.filter(\.isLivePhoto) }
+    private var photos: [MediaItem] { plan.photos }
+    private var videos: [MediaItem] { plan.videos }
+    private var livePhotos: [MediaItem] { plan.livePhotos }
+    private var largestPhoto: MediaItem? { plan.largestPhoto }
 
     var body: some View {
         @Bindable var settings = settings
-        let run = runItems
+        let run = plan.run
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
-                    totals(run)
+                    totals
 
                     if !livePhotos.isEmpty {
                         liveSettings
@@ -88,18 +110,30 @@ struct ReviewSheet: View {
                 .padding(.bottom, 8)
             }
         }
+        .task(id: settings.recipe) {
+            let savings = library.savings(with: settings.recipe)
+            let run = plan.run
+            let result = await Self.estimate(run, savings: savings)
+            guard !Task.isCancelled else { return }
+            withAnimation(Motion.smooth) { saving = result }
+        }
         .presentationDetents([.large])
         .presentationBackground(Color.screenBackground)
     }
 
-    private func totals(_ run: [MediaItem]) -> some View {
-        let size = run.reduce(Int64(0)) { $0 + $1.size }
-        let saving = library.estimatedSaving(of: run)
-        let skipped = items.count - run.count
+    @concurrent
+    private static func estimate(_ run: [MediaItem], savings: LibraryStore.Savings) async -> Int64 {
+        savings.saving(of: run)
+    }
+
+    private var totals: some View {
+        let size = plan.size
+        let saving = saving ?? library.estimatedSaving(of: plan.run)
+        let skipped = plan.skipped
         return GlassCard {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(spacing: 12) {
-                    Figure(value: run.count.formatted(), label: run.count == 1 ? "Item" : "Items")
+                    Figure(value: plan.run.count.formatted(), label: plan.run.count == 1 ? "Item" : "Items")
                     Figure(value: ByteFormat.string(size), label: "Now")
                     Figure(value: "≈ \(ByteFormat.string(size - saving))", label: "After", tinted: true)
                 }
@@ -158,8 +192,6 @@ struct ReviewSheet: View {
             ComparisonCard(item: largestPhoto ?? sample, recipe: settings.recipe)
         }
     }
-
-    private var largestPhoto: MediaItem? { photos.max { $0.size < $1.size } }
 
     private var liveSettings: some View {
         @Bindable var settings = settings

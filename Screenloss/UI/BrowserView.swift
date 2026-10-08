@@ -23,7 +23,8 @@ struct BrowserView: View {
     @State private var sort: BrowserSort
     @State private var onlyCompressible = false
     @State private var hasLoaded = false
-    @State private var showsReview = false
+    @State private var review: ReviewSheet.Plan?
+    @State private var measureTask: Task<Void, Never>?
     @State private var hint: String?
     @State private var hintTask: Task<Void, Never>?
     @AppStorage(AppTint.storageKey) private var tint = AppTint.mint.rawValue
@@ -33,7 +34,7 @@ struct BrowserView: View {
         _sort = State(initialValue: category.defaultSort)
     }
 
-    private struct Figures {
+    nonisolated private struct Figures: Sendable {
         let size: Int64
         let saving: Int64
     }
@@ -42,10 +43,6 @@ struct BrowserView: View {
         var count = 0
         var size: Int64 = 0
         var saving: Int64 = 0
-    }
-
-    private var selectedItems: [MediaItem] {
-        items.filter { selection.contains($0.id) }
     }
 
     private var totals: Totals {
@@ -67,8 +64,8 @@ struct BrowserView: View {
             .toolbar { toolbar }
             .toolbar(.hidden, for: .tabBar)
             .safeAreaBar(edge: .bottom) { bottomBar(totals) }
-            .sheet(isPresented: $showsReview) {
-                ReviewSheet(items: selectedItems)
+            .sheet(item: $review) { plan in
+                ReviewSheet(plan: plan)
             }
             .task(id: library.version) { load() }
             // The estimates follow the settings and what's already compressed.
@@ -176,7 +173,12 @@ struct BrowserView: View {
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
             Button {
-                showsReview = true
+                // Worked out once here: the sheet doesn't sift the library
+                // again each time it updates.
+                review = ReviewSheet.Plan(
+                    selected: items.filter { selection.contains($0.id) },
+                    excluding: pending.originalIDs
+                )
             } label: {
                 VStack(spacing: 2) {
                     Text(totals.count == 0 ? "Select Items" : "Review \(totals.count) Items")
@@ -233,13 +235,35 @@ struct BrowserView: View {
         filter()
     }
 
+    /// The first time inline, so the totals show at once; after that off the
+    /// main actor, as settings change while something may be animating.
     private func measure() {
+        let items = items
+        let savings = library.savings
+        guard !figures.isEmpty else {
+            figures = Self.figures(of: items, savings: savings)
+            return
+        }
+        measureTask?.cancel()
+        measureTask = Task {
+            let result = await Self.measureInBackground(items, savings: savings)
+            guard !Task.isCancelled else { return }
+            figures = result
+        }
+    }
+
+    @concurrent
+    private static func measureInBackground(_ items: [MediaItem], savings: LibraryStore.Savings) async -> [String: Figures] {
+        figures(of: items, savings: savings)
+    }
+
+    nonisolated private static func figures(of items: [MediaItem], savings: LibraryStore.Savings) -> [String: Figures] {
         var figures: [String: Figures] = [:]
         figures.reserveCapacity(items.count)
         for item in items {
-            figures[item.id] = Figures(size: item.size, saving: library.estimatedSaving(of: CollectionOfOne(item)))
+            figures[item.id] = Figures(size: item.size, saving: savings.saving(of: item))
         }
-        self.figures = figures
+        return figures
     }
 
     private func filter() {

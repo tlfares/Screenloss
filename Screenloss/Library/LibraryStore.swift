@@ -7,7 +7,7 @@ import Photos
 @MainActor
 @Observable
 final class LibraryStore {
-    struct Summary: Equatable {
+    nonisolated struct Summary: Equatable, Sendable {
         var count = 0
         var size: Int64 = 0
         var eligibleCount = 0
@@ -31,6 +31,7 @@ final class LibraryStore {
     private var observer: ChangeObserver?
     private var needsRescan = false
     private var rescanTask: Task<Void, Never>?
+    private var summarizeTask: Task<Void, Never>?
     private var recipe = CompressionSettings.shared.recipe
     /// Originals that already have a copy: counting them again would
     /// promise space twice.
@@ -84,8 +85,27 @@ final class LibraryStore {
     }
 
     func estimatedSaving(of items: some Sequence<MediaItem>) -> Int64 {
-        items.reduce(0) { total, item in
-            compressedOriginals.contains(item.id) ? total : total + SavingsEstimator.estimatedSaving(of: item, recipe: recipe, madeAt: copyLevels[item.id])
+        savings.saving(of: items)
+    }
+
+    /// What the estimates depend on, to work them out off the main actor.
+    var savings: Savings { savings(with: recipe) }
+
+    func savings(with recipe: CompressionRecipe) -> Savings {
+        Savings(recipe: recipe, compressedOriginals: compressedOriginals, copyLevels: copyLevels)
+    }
+
+    nonisolated struct Savings: Sendable {
+        let recipe: CompressionRecipe
+        let compressedOriginals: Set<String>
+        let copyLevels: [String: QualityLevel]
+
+        func saving(of item: MediaItem) -> Int64 {
+            compressedOriginals.contains(item.id) ? 0 : SavingsEstimator.estimatedSaving(of: item, recipe: recipe, madeAt: copyLevels[item.id])
+        }
+
+        func saving(of items: some Sequence<MediaItem>) -> Int64 {
+            items.reduce(0) { $0 + saving(of: $1) }
         }
     }
 
@@ -135,23 +155,44 @@ final class LibraryStore {
         }
     }
 
+    /// Done off the main actor once there are totals to show: a library of
+    /// tens of thousands would otherwise stall whatever is animating.
     private func summarize() {
+        let items = items
+        let savings = savings
+        guard !summaries.isEmpty else {
+            summaries = Self.summaries(of: items, savings: savings)
+            return
+        }
+        summarizeTask?.cancel()
+        summarizeTask = Task {
+            let result = await Self.summarizeInBackground(items, savings: savings)
+            guard !Task.isCancelled else { return }
+            summaries = result
+        }
+    }
+
+    @concurrent
+    private static func summarizeInBackground(_ items: [MediaItem], savings: Savings) async -> [MediaCategory: Summary] {
+        summaries(of: items, savings: savings)
+    }
+
+    nonisolated private static func summaries(of items: [MediaItem], savings: Savings) -> [MediaCategory: Summary] {
         var result = Dictionary(uniqueKeysWithValues: MediaCategory.allCases.map { ($0, Summary()) })
-        let recipe = recipe
         for item in items {
-            let saving = SavingsEstimator.estimatedSaving(of: item, recipe: recipe, madeAt: copyLevels[item.id])
+            let saving = savings.saving(of: item)
             for category in MediaCategory.allCases where category.contains(item) {
                 var summary = result[category] ?? Summary()
                 summary.count += 1
                 summary.size += item.size
-                if item.isEligible, !compressedOriginals.contains(item.id) {
+                if item.isEligible, !savings.compressedOriginals.contains(item.id) {
                     summary.eligibleCount += 1
                     summary.estimatedSaving += saving
                 }
                 result[category] = summary
             }
         }
-        summaries = result
+        return result
     }
 }
 

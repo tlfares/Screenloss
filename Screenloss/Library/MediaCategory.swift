@@ -2,7 +2,7 @@ import Foundation
 
 /// The groups the library is browsed by. They overlap on purpose: a
 /// 300 MB screen recording is both a screen recording and a large file.
-enum MediaCategory: String, CaseIterable, Identifiable, Hashable {
+nonisolated enum MediaCategory: String, CaseIterable, Identifiable, Hashable, Sendable {
     case screenshots
     case screenRecordings
     case photos
