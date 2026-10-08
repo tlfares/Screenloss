@@ -1,92 +1,95 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "%@ of %@": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ sur %@"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "—" : {
+      "shouldTranslate" : false
+    },
+    "%@ → %@ · %lld%% smaller" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ → %@ · %lld %% plus léger"
           }
         }
       }
     },
-    "%@ of %@ · %@ saved": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ sur %@ · %@ gagnés"
+    "%@ of %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sur %@"
           }
         }
       }
     },
-    "%@ saved": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ gagnés"
+    "%@ of %@ · %@ saved" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ sur %@ · %@ gagnés"
           }
         }
       }
     },
-    "%@ will be back once Recently Deleted is emptied.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ seront récupérés une fois « Suppressions récentes » vidé."
+    "%@ saved" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gagnés"
           }
         }
       }
     },
-    "%@ → %@ · %lld%% smaller": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ → %@ · %lld %% plus léger"
+    "%@ will be back once Recently Deleted is emptied." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ seront récupérés une fois « Suppressions récentes » vidé."
           }
         }
       }
     },
-    "%lld": {
-      "shouldTranslate": false
+    "%lld" : {
+      "shouldTranslate" : false
     },
-    "%lld Live Photos": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Live Photo"
+    "%lld items already compressed and waiting for their originals to be removed are left out." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld item already compressed and waiting for its original to be removed is left out."
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Live Photos"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld items already compressed and waiting for their originals to be removed are left out."
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Live Photo"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld élément déjà compressé, dont l’original attend d’être supprimé, est laissé de côté."
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Live Photos"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld éléments déjà compressés, dont les originaux attendent d’être supprimés, sont laissés de côté."
                 }
               }
             }
@@ -94,79 +97,39 @@
         }
       }
     },
-    "%lld Photos": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Photo"
+    "%lld items, %@ in all" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld item, %@ in all"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Photos"
-                }
-              }
-            }
-          }
-        },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld photo"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld photos"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld Videos": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Video"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld Videos"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld items, %@ in all"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld vidéo"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld élément, %@ au total"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld vidéos"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld éléments, %@ au total"
                 }
               }
             }
@@ -174,79 +137,39 @@
         }
       }
     },
-    "%lld items already compressed and waiting for their originals to be removed are left out.": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld item already compressed and waiting for its original to be removed is left out."
+    "%lld Live Photos" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Live Photo"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld items already compressed and waiting for their originals to be removed are left out."
-                }
-              }
-            }
-          }
-        },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld élément déjà compressé, dont l’original attend d’être supprimé, est laissé de côté."
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld éléments déjà compressés, dont les originaux attendent d’être supprimés, sont laissés de côté."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld items, %@ in all": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld item, %@ in all"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld items, %@ in all"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Live Photos"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld élément, %@ au total"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Live Photo"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld éléments, %@ au total"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Live Photos"
                 }
               }
             }
@@ -254,332 +177,39 @@
         }
       }
     },
-    "%lld smaller copies are already in your library. Remove the originals to get %@ back.": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld smaller copy is already in your library. Remove the original to get %@ back."
+    "%lld Photos" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Photo"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld smaller copies are already in your library. Remove the originals to get %@ back."
-                }
-              }
-            }
-          }
-        },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld copie plus légère est déjà dans votre photothèque. Supprimez l’original pour récupérer %@."
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "%lld copies plus légères sont déjà dans votre photothèque. Supprimez les originaux pour récupérer %@."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld%% smaller": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld %% plus léger"
-          }
-        }
-      }
-    },
-    "1:1": {
-      "shouldTranslate": false
-    },
-    "A copy that isn't at least that much smaller is thrown away and the original stays. Originals are only removed after iOS asks you. Copies Screenloss made start unselected; you can still pick them.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une copie qui n’est pas au moins aussi légère est jetée et l’original reste. Les originaux ne sont supprimés qu’après confirmation d’iOS. Les copies faites par Screenloss sont désélectionnées par défaut ; vous pouvez quand même les choisir."
-          }
-        }
-      }
-    },
-    "A smaller file wasn't possible at this quality.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impossible d’obtenir un fichier plus léger à cette qualité."
-          }
-        }
-      }
-    },
-    "About": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À propos"
-          }
-        }
-      }
-    },
-    "About %@ can be freed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Environ %@ peuvent être libérés"
-          }
-        }
-      }
-    },
-    "About %lld percent can be freed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Environ %lld pour cent peuvent être libérés"
-          }
-        }
-      }
-    },
-    "Accent color": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Couleur d’accent"
-          }
-        }
-      }
-    },
-    "After": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Après"
-          }
-        }
-      }
-    },
-    "All Items": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tous les éléments"
-          }
-        }
-      }
-    },
-    "Allow Access to Photos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Autoriser l’accès à Photos"
-          }
-        }
-      }
-    },
-    "Already HEIF: kept as is at this level": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Déjà en HEIF : conservée telle quelle à ce niveau"
-          }
-        }
-      }
-    },
-    "Already compressed. Remove the originals from the Library tab.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Déjà compressé. Supprimez les originaux depuis l’onglet Bibliothèque."
-          }
-        }
-      }
-    },
-    "Already in an efficient format.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Déjà dans un format efficace."
-          }
-        }
-      }
-    },
-    "Animated": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Animé"
-          }
-        }
-      }
-    },
-    "Appearance": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apparence"
-          }
-        }
-      }
-    },
-    "Balanced": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Équilibré"
-          }
-        }
-      }
-    },
-    "Blue": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bleu"
-          }
-        }
-      }
-    },
-    "Burst": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rafale"
-          }
-        }
-      }
-    },
-    "Camera photos and saved images": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photos prises et images enregistrées"
-          }
-        }
-      }
-    },
-    "Cancel": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annuler"
-          }
-        }
-      }
-    },
-    "Cancelled.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Annulé."
-          }
-        }
-      }
-    },
-    "Capture date and time zone, location, camera details, favorites, hidden state, album placement, Live Photo motion (unless you make them still), HDR, color profile, orientation, and the screenshot tag.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date de prise de vue et fuseau horaire, lieu, infos de l’appareil, favoris, masquage, albums, mouvement des Live Photos (sauf si vous les rendez fixes), HDR, profil colorimétrique, orientation et étiquette de capture d’écran."
-          }
-        }
-      }
-    },
-    "Cinematic": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cinématique"
-          }
-        }
-      }
-    },
-    "Cinematic focus data would be lost.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les données de mise au point Cinématique seraient perdues."
-          }
-        }
-      }
-    },
-    "Compact": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compact"
-          }
-        }
-      }
-    },
-    "Compress %lld Items": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compress %lld Item"
-                }
-              },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compress %lld Items"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Photos"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compresser %lld élément"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld photo"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compresser %lld éléments"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld photos"
                 }
               }
             }
@@ -587,59 +217,39 @@
         }
       }
     },
-    "Compressed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compressés"
-          }
-        }
-      }
-    },
-    "Compressing": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compression"
-          }
-        }
-      }
-    },
-    "Compressing %lld items": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compressing %lld item"
+    "%lld smaller copies are already in your library. Remove the originals to get %@ back." : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld smaller copy is already in your library. Remove the original to get %@ back."
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compressing %lld items"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld smaller copies are already in your library. Remove the originals to get %@ back."
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compression de %lld élément"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld copie plus légère est déjà dans votre photothèque. Supprimez l’original pour récupérer %@."
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Compression de %lld éléments"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld copies plus légères sont déjà dans votre photothèque. Supprimez les originaux pour récupérer %@."
                 }
               }
             }
@@ -647,1075 +257,39 @@
         }
       }
     },
-    "Compression": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compression"
-          }
-        }
-      }
-    },
-    "Continue": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continuer"
-          }
-        }
-      }
-    },
-    "Convert": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Convertir"
-          }
-        }
-      }
-    },
-    "Copies are made from the photo as it appears in Photos, edits and Photographic Styles included, and carry over everything iOS lets an app write. Those edits become part of the copy: they can't be reverted afterwards.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les copies sont faites à partir de la photo telle qu’elle apparaît dans Photos, retouches et Styles photographiques compris, et reprennent tout ce qu’iOS permet à une app d’écrire. Ces retouches font alors partie de la copie : on ne peut plus les annuler ensuite."
-          }
-        }
-      }
-    },
-    "Copies are saved in your library.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les copies sont enregistrées dans votre photothèque."
-          }
-        }
-      }
-    },
-    "Copies saved so far stay in your library, and their originals can still be removed.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les copies déjà enregistrées restent dans votre photothèque, et leurs originaux peuvent toujours être supprimés."
-          }
-        }
-      }
-    },
-    "Could be freed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pourrait être libéré"
-          }
-        }
-      }
-    },
-    "Dark": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sombre"
-          }
-        }
-      }
-    },
-    "Depth data and Portrait edits would be lost.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les données de profondeur et les retouches Portrait seraient perdues."
-          }
-        }
-      }
-    },
-    "Deselect All": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tout désélectionner"
-          }
-        }
-      }
-    },
-    "Done": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terminé"
-          }
-        }
-      }
-    },
-    "Each copy is checked before its original is touched.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chaque copie est vérifiée avant de toucher à son original."
-          }
-        }
-      }
-    },
-    "Each copy is saved before its original goes, so the next ones need room. Remove the originals done so far, empty Recently Deleted in Photos, then continue.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chaque copie est enregistrée avant que son original parte, il faut donc de la place pour les suivantes. Supprimez les originaux déjà traités, videz « Suppressions récentes » dans Photos, puis continuez."
-          }
-        }
-      }
-    },
-    "Encoding %@…": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Encodage de %@…"
-          }
-        }
-      }
-    },
-    "Encoding failed.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’encodage a échoué."
-          }
-        }
-      }
-    },
-    "Everything happens on this iPhone. Nothing is uploaded, no account, no subscription.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tout se passe sur cet iPhone. Rien n’est envoyé, pas de compte, pas d’abonnement."
-          }
-        }
-      }
-    },
-    "Everything you've filmed or saved": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tout ce que vous avez filmé ou enregistré"
-          }
-        }
-      }
-    },
-    "Fit": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajuster"
-          }
-        }
-      }
-    },
-    "Fit to card": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ajuster à la carte"
-          }
-        }
-      }
-    },
-    "Format": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Format"
-          }
-        }
-      }
-    },
-    "Freed so far": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Libéré jusqu’ici"
-          }
-        }
-      }
-    },
-    "High": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Élevée"
-          }
-        }
-      }
-    },
-    "How to Empty It": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Comment le vider"
-          }
-        }
-      }
-    },
-    "I don't drink coffee, but if you like the app, you can still [buy me a coffee](https://buymeacoffee.com/tlfares).": {
-      "shouldTranslate": false
-    },
-    "Image": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Image"
-          }
-        }
-      }
-    },
-    "Images not yet in HEIF": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Images pas encore en HEIF"
-          }
-        }
-      }
-    },
-    "Indigo": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Indigo"
-          }
-        }
-      }
-    },
-    "Indistinguishable from the original on iPhone.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Impossible à distinguer de l’original sur iPhone."
-          }
-        }
-      }
-    },
-    "Issues": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Problèmes"
-          }
-        }
-      }
-    },
-    "It would be pulled out of its burst.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il serait sorti de sa rafale."
-          }
-        }
-      }
-    },
-    "It's no longer in the library.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Il n’est plus dans la photothèque."
-          }
-        }
-      }
-    },
-    "Item": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Élément"
-          }
-        }
-      }
-    },
-    "Items": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Éléments"
-          }
-        }
-      }
-    },
-    "Items over %@": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Éléments de plus de %@"
-          }
-        }
-      }
-    },
-    "Its Loop or Bounce effect would be lost.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Son effet Boucle ou Rebond serait perdu."
-          }
-        }
-      }
-    },
-    "Its photo and motion couldn't be matched, so it was left as is.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sa photo et son mouvement n’ont pas pu être associés, il a donc été laissé tel quel."
-          }
-        }
-      }
-    },
-    "JPEG & PNG": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "JPEG et PNG"
-          }
-        }
-      }
-    },
-    "Keep Going": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Continuer"
-          }
-        }
-      }
-    },
-    "Keep Live": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garder Live"
-          }
-        }
-      }
-    },
-    "Keep a copy only if": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Garder une copie si"
-          }
-        }
-      }
-    },
-    "Keep them Live, or make them still": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gardez-les Live, ou rendez-les fixes"
-          }
-        }
-      }
-    },
-    "Kept as is": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gardés tels quels"
-          }
-        }
-      }
-    },
-    "Kept on every copy": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conservé sur chaque copie"
-          }
-        }
-      }
-    },
-    "Large Files": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gros fichiers"
-          }
-        }
-      }
-    },
-    "Largest First": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus gros en premier"
-          }
-        }
-      }
-    },
-    "Later": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus tard"
-          }
-        }
-      }
-    },
-    "Left alone: RAW, Portrait, bursts, animated images, spatial and Cinematic media, slow motion, and Live Photos with a Loop or Bounce effect. Re-encoding them would lose something Photos can't rebuild.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Laissés de côté : RAW, Portrait, rafales, images animées, contenus spatiaux et Cinématiques, ralentis, et Live Photos avec un effet Boucle ou Rebond. Les réencoder perdrait quelque chose que Photos ne peut pas reconstruire."
-          }
-        }
-      }
-    },
-    "Library": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Bibliothèque"
-          }
-        }
-      }
-    },
-    "Light": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clair"
-          }
-        }
-      }
-    },
-    "Live Photos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live Photos"
-          }
-        }
-      }
-    },
-    "Long recordings add up fast": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les longs enregistrements pèsent vite lourd"
-          }
-        }
-      }
-    },
-    "Looking at your photos and videos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Analyse de vos photos et vidéos"
-          }
-        }
-      }
-    },
-    "Loop or Bounce": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Boucle ou Rebond"
-          }
-        }
-      }
-    },
-    "Make Still": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rendre fixe"
-          }
-        }
-      }
-    },
-    "Make room without losing a thing": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Faites de la place sans rien perdre"
-          }
-        }
-      }
-    },
-    "Maximum Size": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Taille maximale"
-          }
-        }
-      }
-    },
-    "Minimum saving": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gain minimum"
-          }
-        }
-      }
-    },
-    "Mint": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Menthe"
-          }
-        }
-      }
-    },
-    "Mode": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mode"
-          }
-        }
-      }
-    },
-    "Newest First": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus récents en premier"
-          }
-        }
-      }
-    },
-    "No item here can be compressed.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aucun élément ici ne peut être compressé."
-          }
-        }
-      }
-    },
-    "None": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aucun"
-          }
-        }
-      }
-    },
-    "Not enough smaller: this one would be kept as is": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pas assez plus légère : celle-ci serait conservée telle quelle"
-          }
-        }
-      }
-    },
-    "Not kept": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Non conservé"
-          }
-        }
-      }
-    },
-    "Nothing Here": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien ici"
-          }
-        }
-      }
-    },
-    "Nothing in this category in your library.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien dans cette catégorie dans votre photothèque."
-          }
-        }
-      }
-    },
-    "Nothing leaves your iPhone. No account, no upload.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien ne quitte votre iPhone. Pas de compte, pas d’envoi."
-          }
-        }
-      }
-    },
-    "Nothing needed compressing.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien n’avait besoin d’être compressé."
-          }
-        }
-      }
-    },
-    "Nothing was removed. You can do it any time from the Library tab.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien n’a été supprimé. Vous pouvez le faire à tout moment depuis l’onglet Bibliothèque."
-          }
-        }
-      }
-    },
-    "Nothing was removed. Your originals and their copies are both still in the library.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rien n’a été supprimé. Vos originaux et leurs copies sont toujours dans la photothèque."
-          }
-        }
-      }
-    },
-    "Noticeably smaller, still sharp on a phone.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nettement plus léger, toujours net sur un téléphone."
-          }
-        }
-      }
-    },
-    "Now": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Maintenant"
-          }
-        }
-      }
-    },
-    "Oldest First": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Plus anciens en premier"
-          }
-        }
-      }
-    },
-    "One last step": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Une dernière étape"
-          }
-        }
-      }
-    },
-    "Only Compressible": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Compressibles uniquement"
-          }
-        }
-      }
-    },
-    "Only the photo is kept, as a classic photo. Removing the motion alone saves about half.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Seule la photo est gardée, comme une photo classique. Retirer le mouvement suffit à gagner environ la moitié."
-          }
-        }
-      }
-    },
-    "Open Photos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir Photos"
-          }
-        }
-      }
-    },
-    "Open Photos, then Collections": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrez Photos, puis Collections"
-          }
-        }
-      }
-    },
-    "Open Settings": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ouvrir Réglages"
-          }
-        }
-      }
-    },
-    "Original": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Original"
-          }
-        }
-      }
-    },
-    "Originals removed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Originaux supprimés"
-          }
-        }
-      }
-    },
-    "Originals stay in the library next to their copies. You can remove them later from the Library tab.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les originaux restent dans la photothèque à côté de leurs copies. Vous pourrez les supprimer plus tard depuis l’onglet Bibliothèque."
-          }
-        }
-      }
-    },
-    "Originals to remove": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Originaux à supprimer"
-          }
-        }
-      }
-    },
-    "Paused": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En pause"
-          }
-        }
-      }
-    },
-    "Photo": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo"
-          }
-        }
-      }
-    },
-    "Photo Format": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Format photo"
-          }
-        }
-      }
-    },
-    "Photo and motion are both compressed. They still play when you press and hold.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La photo et le mouvement sont compressés. Ils se lisent toujours en appuyant longuement."
-          }
-        }
-      }
-    },
-    "Photo and motion kept as they are at this level": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo et mouvement conservés tels quels à ce niveau"
-          }
-        }
-      }
-    },
-    "Photo kept as is, its motion is removed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo conservée telle quelle, son mouvement est retiré"
-          }
-        }
-      }
-    },
-    "Photo kept as is, only its motion is compressed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photo conservée telle quelle, seul son mouvement est compressé"
-          }
-        }
-      }
-    },
-    "Photo quality": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Qualité photo"
-          }
-        }
-      }
-    },
-    "Photos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photos"
-          }
-        }
-      }
-    },
-    "Photos access is off. Choose Full Access in Settings so every item can be found.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’accès à Photos est désactivé. Choisissez Accès complet dans Réglages pour que tous les éléments soient trouvés."
-          }
-        }
-      }
-    },
-    "Photos didn't accept the new file.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Photos n’a pas accepté le nouveau fichier."
-          }
-        }
-      }
-    },
-    "Pick exactly what to compress": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Choisissez précisément quoi compresser"
-          }
-        }
-      }
-    },
-    "Portrait": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Portrait"
-          }
-        }
-      }
-    },
-    "Preview": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aperçu"
-          }
-        }
-      }
-    },
-    "Questions, feedback or bug reports: [@rmxptfl](https://x.com/rmxptfl) on X · [tlfares](https://github.com/tlfares) on GitHub, or at the bottom of [tlfares.pages.dev](https://tlfares.pages.dev).": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Questions, retours ou bugs : [@rmxptfl](https://x.com/rmxptfl) sur X · [tlfares](https://github.com/tlfares) sur GitHub, ou en bas de [tlfares.pages.dev](https://tlfares.pages.dev)."
-          }
-        }
-      }
-    },
-    "RAW": {
-      "shouldTranslate": false
-    },
-    "RAW files keep sensor data that HEIF can't hold.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les fichiers RAW gardent des données du capteur que le HEIF ne peut pas contenir."
-          }
-        }
-      }
-    },
-    "Re-encoding would keep only the first frame.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le réencodage ne garderait que la première image."
-          }
-        }
-      }
-    },
-    "Read-only": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lecture seule"
-          }
-        }
-      }
-    },
-    "Reading failed.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La lecture a échoué."
-          }
-        }
-      }
-    },
-    "Reading your library…": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lecture de votre photothèque…"
-          }
-        }
-      }
-    },
-    "Reading your library… %@ of %@": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lecture de votre photothèque… %@ sur %@"
-          }
-        }
-      }
-    },
-    "Remove %lld Originals": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Remove %lld Original"
+    "%lld Videos" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Video"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Remove %lld Originals"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Videos"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Supprimer %lld original"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld vidéo"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Supprimer %lld originaux"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld vidéos"
                 }
               }
             }
@@ -1723,89 +297,311 @@
         }
       }
     },
-    "Remove Originals": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer les originaux"
+    "%lld%% smaller" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld %% plus léger"
           }
         }
       }
     },
-    "Remove originals when done": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer les originaux à la fin"
+    "−%@" : {
+      "shouldTranslate" : false
+    },
+    "≈ %@" : {
+      "shouldTranslate" : false
+    },
+    "≈ %@ to free" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "≈ %@ à libérer"
           }
         }
       }
     },
-    "Remove the originals": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Supprimer les originaux"
+    "1:1" : {
+      "shouldTranslate" : false
+    },
+    "A copy that isn't at least that much smaller is thrown away and the original stays. Originals are only removed after iOS asks you. Copies Screenloss made start unselected; you can still pick them." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une copie qui n’est pas au moins aussi légère est jetée et l’original reste. Les originaux ne sont supprimés qu’après confirmation d’iOS. Les copies faites par Screenloss sont désélectionnées par défaut ; vous pouvez quand même les choisir."
           }
         }
       }
     },
-    "Resolution": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Résolution"
+    "A smaller file wasn't possible at this quality." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d’obtenir un fichier plus léger à cette qualité."
           }
         }
       }
     },
-    "Review": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vérifier"
+    "About" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
           }
         }
       }
     },
-    "Review %lld Items": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Review %lld Item"
+    "About %@ can be freed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Environ %@ peuvent être libérés"
+          }
+        }
+      }
+    },
+    "About %lld percent can be freed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Environ %lld pour cent peuvent être libérés"
+          }
+        }
+      }
+    },
+    "Accent color" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur d’accent"
+          }
+        }
+      }
+    },
+    "After" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Après"
+          }
+        }
+      }
+    },
+    "All Items" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous les éléments"
+          }
+        }
+      }
+    },
+    "Allow Access to Photos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoriser l’accès à Photos"
+          }
+        }
+      }
+    },
+    "Already compressed. Remove the originals from the Library tab." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà compressé. Supprimez les originaux depuis l’onglet Bibliothèque."
+          }
+        }
+      }
+    },
+    "Already HEIF: kept as is at this level" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà en HEIF : conservée telle quelle à ce niveau"
+          }
+        }
+      }
+    },
+    "Already HEIF: kept as is in lossless mode" : {
+
+    },
+    "Already in an efficient format." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà dans un format efficace."
+          }
+        }
+      }
+    },
+    "Animated" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animé"
+          }
+        }
+      }
+    },
+    "Appearance" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        }
+      }
+    },
+    "Balanced" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équilibré"
+          }
+        }
+      }
+    },
+    "Blue" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleu"
+          }
+        }
+      }
+    },
+    "Burst" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rafale"
+          }
+        }
+      }
+    },
+    "Camera photos and saved images" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos prises et images enregistrées"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "Cancelled." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulé."
+          }
+        }
+      }
+    },
+    "Capture date and time zone, location, camera details, favorites, hidden state, album placement, Live Photo motion (unless you make them still), HDR, color profile, orientation, and the screenshot tag." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date de prise de vue et fuseau horaire, lieu, infos de l’appareil, favoris, masquage, albums, mouvement des Live Photos (sauf si vous les rendez fixes), HDR, profil colorimétrique, orientation et étiquette de capture d’écran."
+          }
+        }
+      }
+    },
+    "Cinematic" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinématique"
+          }
+        }
+      }
+    },
+    "Cinematic focus data would be lost." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données de mise au point Cinématique seraient perdues."
+          }
+        }
+      }
+    },
+    "Compact" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compact"
+          }
+        }
+      }
+    },
+    "Compress %lld Items" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compress %lld Item"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Review %lld Items"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compress %lld Items"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Vérifier %lld élément"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compresser %lld élément"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Vérifier %lld éléments"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compresser %lld éléments"
                 }
               }
             }
@@ -1813,109 +609,59 @@
         }
       }
     },
-    "Same quality in HEIF. Best for screenshots you zoom into.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Même qualité, en HEIF. Idéal pour les captures d’écran que vous zoomez."
+    "Compressed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressés"
           }
         }
       }
     },
-    "Same quality in HEVC, roughly half the size of H.264.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Même qualité, en HEVC, environ moitié moins lourd que le H.264."
+    "Compressing" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compression"
           }
         }
       }
     },
-    "Saved as PNG, often several MB each": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enregistrées en PNG, souvent plusieurs Mo chacune"
-          }
-        }
-      }
-    },
-    "Screen Recordings": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enregistrements d’écran"
-          }
-        }
-      }
-    },
-    "Screenshots": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Captures d’écran"
-          }
-        }
-      }
-    },
-    "Screenshots, recordings, photos and videos are re-encoded to HEIF and HEVC, right on your iPhone. Dates, places, albums and favorites stay as they are.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Captures, enregistrements, photos et vidéos sont réencodés en HEIF et HEVC, directement sur votre iPhone. Dates, lieux, albums et favoris restent tels quels."
-          }
-        }
-      }
-    },
-    "Scroll to Utilities › Recently Deleted": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Faites défiler jusqu’à Utilitaires › Suppressions récentes"
-          }
-        }
-      }
-    },
-    "See %lld issues": {
-      "localizations": {
-        "en": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "See %lld issue"
+    "Compressing %lld items" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compressing %lld item"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "See %lld issues"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compressing %lld items"
                 }
               }
             }
           }
         },
-        "fr": {
-          "variations": {
-            "plural": {
-              "one": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Voir %lld problème"
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compression de %lld élément"
                 }
               },
-              "other": {
-                "stringUnit": {
-                  "state": "translated",
-                  "value": "Voir %lld problèmes"
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Compression de %lld éléments"
                 }
               }
             }
@@ -1923,485 +669,1757 @@
         }
       }
     },
-    "Select All": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tout sélectionner"
+    "Compression" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compression"
           }
         }
       }
     },
-    "Select Items": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sélectionnez des éléments"
+    "Continue" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
           }
         }
       }
     },
-    "Select, then Delete All": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sélectionner, puis Tout supprimer"
+    "Convert" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convertir"
           }
         }
       }
     },
-    "Selected": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sélectionné"
+    "Copies are made from the photo as it appears in Photos, edits and Photographic Styles included, and carry over everything iOS lets an app write. Those edits become part of the copy: they can't be reverted afterwards." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les copies sont faites à partir de la photo telle qu’elle apparaît dans Photos, retouches et Styles photographiques compris, et reprennent tout ce qu’iOS permet à une app d’écrire. Ces retouches font alors partie de la copie : on ne peut plus les annuler ensuite."
           }
         }
       }
     },
-    "Selected size": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Taille sélectionnée"
+    "Copies are saved in your library." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les copies sont enregistrées dans votre photothèque."
           }
         }
       }
     },
-    "Settings": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Réglages"
+    "Copies saved so far stay in your library, and their originals can still be removed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les copies déjà enregistrées restent dans votre photothèque, et leurs originaux peuvent toujours être supprimés."
           }
         }
       }
     },
-    "Show actual pixels": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Afficher les pixels réels"
+    "Could be freed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pourrait être libéré"
           }
         }
       }
     },
-    "Skip what's already compressed": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ignorer ce qui est déjà compressé"
+    "Dark" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sombre"
           }
         }
       }
     },
-    "Slo-mo": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ralenti"
+    "Depth data and Portrait edits would be lost." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données de profondeur et les retouches Portrait seraient perdues."
           }
         }
       }
     },
-    "Smaller files, fine detail softens on close zoom.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fichiers plus légers, les détails fins s’adoucissent en zoomant de près."
+    "Deselect All" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout désélectionner"
           }
         }
       }
     },
-    "Smallest files, for things you only glance at.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fichiers les plus légers, pour ce qu’on ne fait que survoler."
+    "Done" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         }
       }
     },
-    "Smallest files, softer on a big screen.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fichiers les plus légers, plus doux sur grand écran."
+    "Each copy is checked before its original is touched." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque copie est vérifiée avant de toucher à son original."
           }
         }
       }
     },
-    "Sort": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trier"
+    "Each copy is saved before its original goes, so the next ones need room. Remove the originals done so far, empty Recently Deleted in Photos, then continue." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaque copie est enregistrée avant que son original parte, il faut donc de la place pour les suivantes. Supprimez les originaux déjà traités, videz « Suppressions récentes » dans Photos, puis continuez."
           }
         }
       }
     },
-    "Sort and Filter": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Trier et filtrer"
+    "Encoding %@…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encodage de %@…"
           }
         }
       }
     },
-    "Spatial": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Spatial"
+    "Encoding failed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’encodage a échoué."
           }
         }
       }
     },
-    "Spatial depth would be lost.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La profondeur spatiale serait perdue."
+    "Everything happens on this iPhone. Nothing is uploaded, no account, no subscription." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout se passe sur cet iPhone. Rien n’est envoyé, pas de compte, pas d’abonnement."
           }
         }
       }
     },
-    "Starting…": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Démarrage…"
+    "Everything you've filmed or saved" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout ce que vous avez filmé ou enregistré"
           }
         }
       }
     },
-    "Stop": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrêter"
+    "Fit" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajuster"
           }
         }
       }
     },
-    "Stop compressing?": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrêter la compression ?"
+    "Fit to card" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajuster à la carte"
           }
         }
       }
     },
-    "Stopped": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Arrêté"
+    "Format" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format"
           }
         }
       }
     },
-    "System": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Système"
+    "Freed so far" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libéré jusqu’ici"
           }
         }
       }
     },
-    "The new file didn't match the original, so it was discarded.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Le nouveau fichier ne correspondait pas à l’original, il a donc été jeté."
+    "HEIF always loses a little, even on Convert. That's Apple's encoder: it has no lossless mode. The difference is invisible on a phone." : {
+
+    },
+    "High" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Élevée"
           }
         }
       }
     },
-    "The original couldn't be loaded.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’original n’a pas pu être chargé."
+    "How to Empty It" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment le vider"
           }
         }
       }
     },
-    "The original couldn't be read.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’original n’a pas pu être lu."
+    "I don't drink coffee, but if you like the app, you can still [buy me a coffee](https://buymeacoffee.com/tlfares)." : {
+      "shouldTranslate" : false
+    },
+    "Image" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
           }
         }
       }
     },
-    "The originals are in Recently Deleted, where iOS keeps them for 30 days. Empty it in Photos to get the space back now.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les originaux sont dans « Suppressions récentes », où iOS les garde 30 jours. Videz-le dans Photos pour récupérer l’espace tout de suite."
+    "Images not yet in HEIF" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Images pas encore en HEIF"
           }
         }
       }
     },
-    "The slow-motion ramp couldn't be edited anymore.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La rampe du ralenti ne pourrait plus être modifiée."
+    "Indigo" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indigo"
           }
         }
       }
     },
-    "Their copies are in your library. Removing them gives back %@.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leurs copies sont dans votre photothèque. Les supprimer libère %@."
+    "Indistinguishable from the original on iPhone." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible à distinguer de l’original sur iPhone."
           }
         }
       }
     },
-    "This device can't encode that format.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cet appareil ne peut pas encoder ce format."
+    "iOS asks you before any original is deleted." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS vous demande avant de supprimer un original."
           }
         }
       }
     },
-    "This file format isn't supported.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce format de fichier n’est pas pris en charge."
+    "iOS doesn't let apps set the date a photo was added, or read captions. Copies appear where they belong when Photos is sorted by Date Captured, and at the top when sorted by Recently Added." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS ne permet pas aux apps de définir la date d’ajout d’une photo, ni de lire les légendes. Les copies apparaissent à leur place quand Photos est trié par date de capture, et en haut quand il est trié par ajout récent."
           }
         }
       }
     },
-    "This item can't be changed from apps.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cet élément ne peut pas être modifié par les apps."
+    "iOS will ask you first. Originals then go to Recently Deleted for 30 days." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iOS vous demandera d’abord. Les originaux vont ensuite dans « Suppressions récentes » pendant 30 jours."
           }
         }
       }
     },
-    "To free": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "À libérer"
+    "Issues" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problèmes"
           }
         }
       }
     },
-    "Unsupported": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Non pris en charge"
+    "It would be pulled out of its burst." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il serait sorti de sa rafale."
           }
         }
       }
     },
-    "Video": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vidéo"
+    "It's no longer in the library." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il n’est plus dans la photothèque."
           }
         }
       }
     },
-    "Video quality": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Qualité vidéo"
+    "Item" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Élément"
           }
         }
       }
     },
-    "Videos": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vidéos"
+    "Items" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éléments"
           }
         }
       }
     },
-    "Videos are encoded in HEVC. HDR stays HDR, audio is kept as is. Long videos can take a while: the run keeps going if you leave the app.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Les vidéos sont encodées en HEVC. Le HDR reste HDR, l’audio est gardé tel quel. Les longues vidéos peuvent prendre du temps : la compression continue si vous quittez l’app."
+    "Items over %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Éléments de plus de %@"
           }
         }
       }
     },
-    "Waiting for free space": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "En attente d’espace libre"
+    "Its Loop or Bounce effect would be lost." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son effet Boucle ou Rebond serait perdu."
           }
         }
       }
     },
-    "What's Kept": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ce qui est conservé"
+    "Its photo and motion couldn't be matched, so it was left as is." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sa photo et son mouvement n’ont pas pu être associés, il a donc été laissé tel quel."
           }
         }
       }
     },
-    "Working through photos…": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Traitement des photos…"
+    "JPEG & PNG" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JPEG et PNG"
           }
         }
       }
     },
-    "Writing failed.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L’écriture a échoué."
+    "JPEG loses a little too, and makes bigger files than HEIF. It opens everywhere." : {
+
+    },
+    "JPEG XL by [libjxl](https://github.com/tlfares/Screenloss/tree/main/Vendor) (BSD license)." : {
+
+    },
+    "Keep a copy only if" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garder une copie si"
           }
         }
       }
     },
-    "Yellow": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jaune"
+    "Keep Going" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
           }
         }
       }
     },
-    "Your iPhone is almost full": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Votre iPhone est presque plein"
+    "Keep Live" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Garder Live"
           }
         }
       }
     },
-    "iOS asks you before any original is deleted.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iOS vous demande avant de supprimer un original."
+    "Keep them Live, or make them still" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardez-les Live, ou rendez-les fixes"
           }
         }
       }
     },
-    "iOS doesn't let apps set the date a photo was added, or read captions. Copies appear where they belong when Photos is sorted by Date Captured, and at the top when sorted by Recently Added.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iOS ne permet pas aux apps de définir la date d’ajout d’une photo, ni de lire les légendes. Les copies apparaissent à leur place quand Photos est trié par date de capture, et en haut quand il est trié par ajout récent."
+    "Kept as is" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gardés tels quels"
           }
         }
       }
     },
-    "iOS will ask you first. Originals then go to Recently Deleted for 30 days.": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "iOS vous demandera d’abord. Les originaux vont ensuite dans « Suppressions récentes » pendant 30 jours."
+    "Kept on every copy" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conservé sur chaque copie"
           }
         }
       }
     },
-    "of %lld selected": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "sélectionnés sur %lld"
+    "Large Files" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gros fichiers"
           }
         }
       }
     },
-    "—": {
-      "shouldTranslate": false
+    "Largest First" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus gros en premier"
+          }
+        }
+      }
     },
-    "−%@": {
-      "shouldTranslate": false
+    "Later" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus tard"
+          }
+        }
+      }
     },
-    "≈ %@": {
-      "shouldTranslate": false
+    "Left alone: RAW, Portrait, bursts, animated images, spatial and Cinematic media, slow motion, and Live Photos with a Loop or Bounce effect. Re-encoding them would lose something Photos can't rebuild." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laissés de côté : RAW, Portrait, rafales, images animées, contenus spatiaux et Cinématiques, ralentis, et Live Photos avec un effet Boucle ou Rebond. Les réencoder perdrait quelque chose que Photos ne peut pas reconstruire."
+          }
+        }
+      }
     },
-    "≈ %@ to free": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "≈ %@ à libérer"
+    "Library" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bibliothèque"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clair"
+          }
+        }
+      }
+    },
+    "Live Photos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Live Photos"
+          }
+        }
+      }
+    },
+    "Long recordings add up fast" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les longs enregistrements pèsent vite lourd"
+          }
+        }
+      }
+    },
+    "Looking at your photos and videos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyse de vos photos et vidéos"
+          }
+        }
+      }
+    },
+    "Loop or Bounce" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boucle ou Rebond"
+          }
+        }
+      }
+    },
+    "Lossless in JPEG XL: the level doesn't apply." : {
+
+    },
+    "Lossless: every pixel is kept. Files are bigger than HEIF. iPhone, iPad and Mac open them. Windows, Android and many websites may not. Photos doesn't list them under Screenshots. HEIF photos and Live Photos stay as they are." : {
+
+    },
+    "Make room without losing a thing" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites de la place sans rien perdre"
+          }
+        }
+      }
+    },
+    "Make Still" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rendre fixe"
+          }
+        }
+      }
+    },
+    "Maximum Size" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille maximale"
+          }
+        }
+      }
+    },
+    "Minimum saving" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gain minimum"
+          }
+        }
+      }
+    },
+    "Mint" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menthe"
+          }
+        }
+      }
+    },
+    "Mode" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "Newest First" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus récents en premier"
+          }
+        }
+      }
+    },
+    "No item here can be compressed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun élément ici ne peut être compressé."
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun"
+          }
+        }
+      }
+    },
+    "Not enough smaller: this one would be kept as is" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas assez plus légère : celle-ci serait conservée telle quelle"
+          }
+        }
+      }
+    },
+    "Not kept" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non conservé"
+          }
+        }
+      }
+    },
+    "Nothing Here" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien ici"
+          }
+        }
+      }
+    },
+    "Nothing in this category in your library." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien dans cette catégorie dans votre photothèque."
+          }
+        }
+      }
+    },
+    "Nothing leaves your iPhone. No account, no upload." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien ne quitte votre iPhone. Pas de compte, pas d’envoi."
+          }
+        }
+      }
+    },
+    "Nothing needed compressing." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien n’avait besoin d’être compressé."
+          }
+        }
+      }
+    },
+    "Nothing was removed. You can do it any time from the Library tab." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien n’a été supprimé. Vous pouvez le faire à tout moment depuis l’onglet Bibliothèque."
+          }
+        }
+      }
+    },
+    "Nothing was removed. Your originals and their copies are both still in the library." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rien n’a été supprimé. Vos originaux et leurs copies sont toujours dans la photothèque."
+          }
+        }
+      }
+    },
+    "Noticeably smaller, still sharp on a phone." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nettement plus léger, toujours net sur un téléphone."
+          }
+        }
+      }
+    },
+    "Now" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenant"
+          }
+        }
+      }
+    },
+    "of %lld selected" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sélectionnés sur %lld"
+          }
+        }
+      }
+    },
+    "Oldest First" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plus anciens en premier"
+          }
+        }
+      }
+    },
+    "One last step" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une dernière étape"
+          }
+        }
+      }
+    },
+    "Only Compressible" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compressibles uniquement"
+          }
+        }
+      }
+    },
+    "Only the photo is kept, as a classic photo. Removing the motion alone saves about half." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seule la photo est gardée, comme une photo classique. Retirer le mouvement suffit à gagner environ la moitié."
+          }
+        }
+      }
+    },
+    "Open Photos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir Photos"
+          }
+        }
+      }
+    },
+    "Open Photos, then Collections" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrez Photos, puis Collections"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ouvrir Réglages"
+          }
+        }
+      }
+    },
+    "Original" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original"
+          }
+        }
+      }
+    },
+    "Originals removed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Originaux supprimés"
+          }
+        }
+      }
+    },
+    "Originals stay in the library next to their copies. You can remove them later from the Library tab." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les originaux restent dans la photothèque à côté de leurs copies. Vous pourrez les supprimer plus tard depuis l’onglet Bibliothèque."
+          }
+        }
+      }
+    },
+    "Originals to remove" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Originaux à supprimer"
+          }
+        }
+      }
+    },
+    "Paused" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En pause"
+          }
+        }
+      }
+    },
+    "Photo" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo"
+          }
+        }
+      }
+    },
+    "Photo and motion are both compressed. They still play when you press and hold." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La photo et le mouvement sont compressés. Ils se lisent toujours en appuyant longuement."
+          }
+        }
+      }
+    },
+    "Photo and motion kept as they are at this level" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo et mouvement conservés tels quels à ce niveau"
+          }
+        }
+      }
+    },
+    "Photo Format" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format photo"
+          }
+        }
+      }
+    },
+    "Photo kept as is, its motion is removed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo conservée telle quelle, son mouvement est retiré"
+          }
+        }
+      }
+    },
+    "Photo kept as is, only its motion is compressed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo conservée telle quelle, seul son mouvement est compressé"
+          }
+        }
+      }
+    },
+    "Photo quality" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité photo"
+          }
+        }
+      }
+    },
+    "Photos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos"
+          }
+        }
+      }
+    },
+    "Photos access is off. Choose Full Access in Settings so every item can be found." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’accès à Photos est désactivé. Choisissez Accès complet dans Réglages pour que tous les éléments soient trouvés."
+          }
+        }
+      }
+    },
+    "Photos didn't accept the new file." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos n’a pas accepté le nouveau fichier."
+          }
+        }
+      }
+    },
+    "Pick exactly what to compress" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choisissez précisément quoi compresser"
+          }
+        }
+      }
+    },
+    "Portrait" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portrait"
+          }
+        }
+      }
+    },
+    "Preview" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aperçu"
+          }
+        }
+      }
+    },
+    "Questions, feedback or bug reports: [@rmxptfl](https://x.com/rmxptfl) on X · [tlfares](https://github.com/tlfares) on GitHub, or at the bottom of [tlfares.pages.dev](https://tlfares.pages.dev)." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questions, retours ou bugs : [@rmxptfl](https://x.com/rmxptfl) sur X · [tlfares](https://github.com/tlfares) sur GitHub, ou en bas de [tlfares.pages.dev](https://tlfares.pages.dev)."
+          }
+        }
+      }
+    },
+    "RAW" : {
+      "shouldTranslate" : false
+    },
+    "RAW files keep sensor data that HEIF can't hold." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les fichiers RAW gardent des données du capteur que le HEIF ne peut pas contenir."
+          }
+        }
+      }
+    },
+    "Re-encoding would keep only the first frame." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le réencodage ne garderait que la première image."
+          }
+        }
+      }
+    },
+    "Read-only" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lecture seule"
+          }
+        }
+      }
+    },
+    "Reading failed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La lecture a échoué."
+          }
+        }
+      }
+    },
+    "Reading your library…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lecture de votre photothèque…"
+          }
+        }
+      }
+    },
+    "Reading your library… %@ of %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lecture de votre photothèque… %@ sur %@"
+          }
+        }
+      }
+    },
+    "Remove %lld Originals" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Remove %lld Original"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Remove %lld Originals"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Supprimer %lld original"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Supprimer %lld originaux"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Remove Originals" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer les originaux"
+          }
+        }
+      }
+    },
+    "Remove originals when done" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer les originaux à la fin"
+          }
+        }
+      }
+    },
+    "Remove the originals" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer les originaux"
+          }
+        }
+      }
+    },
+    "Resolution" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Résolution"
+          }
+        }
+      }
+    },
+    "Review" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vérifier"
+          }
+        }
+      }
+    },
+    "Review %lld Items" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Review %lld Item"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Review %lld Items"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vérifier %lld élément"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vérifier %lld éléments"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Same quality in HEIF. Best for screenshots you zoom into." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Même qualité, en HEIF. Idéal pour les captures d’écran que vous zoomez."
+          }
+        }
+      }
+    },
+    "Same quality in HEVC, roughly half the size of H.264." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Même qualité, en HEVC, environ moitié moins lourd que le H.264."
+          }
+        }
+      }
+    },
+    "Saved as PNG, often several MB each" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrées en PNG, souvent plusieurs Mo chacune"
+          }
+        }
+      }
+    },
+    "Screen Recordings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrements d’écran"
+          }
+        }
+      }
+    },
+    "Screenshots" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captures d’écran"
+          }
+        }
+      }
+    },
+    "Screenshots, recordings, photos and videos are re-encoded to HEIF and HEVC, right on your iPhone. Dates, places, albums and favorites stay as they are." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captures, enregistrements, photos et vidéos sont réencodés en HEIF et HEVC, directement sur votre iPhone. Dates, lieux, albums et favoris restent tels quels."
+          }
+        }
+      }
+    },
+    "Scroll to Utilities › Recently Deleted" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faites défiler jusqu’à Utilitaires › Suppressions récentes"
+          }
+        }
+      }
+    },
+    "See %lld issues" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "See %lld issue"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "See %lld issues"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Voir %lld problème"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Voir %lld problèmes"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Select All" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout sélectionner"
+          }
+        }
+      }
+    },
+    "Select Items" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez des éléments"
+          }
+        }
+      }
+    },
+    "Select, then Delete All" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner, puis Tout supprimer"
+          }
+        }
+      }
+    },
+    "Selected" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionné"
+          }
+        }
+      }
+    },
+    "Selected size" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taille sélectionnée"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
+          }
+        }
+      }
+    },
+    "Show actual pixels" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Afficher les pixels réels"
+          }
+        }
+      }
+    },
+    "Skip what's already compressed" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorer ce qui est déjà compressé"
+          }
+        }
+      }
+    },
+    "Slo-mo" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ralenti"
+          }
+        }
+      }
+    },
+    "Smaller files, fine detail softens on close zoom." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichiers plus légers, les détails fins s’adoucissent en zoomant de près."
+          }
+        }
+      }
+    },
+    "Smallest files, for things you only glance at." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichiers les plus légers, pour ce qu’on ne fait que survoler."
+          }
+        }
+      }
+    },
+    "Smallest files, softer on a big screen." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fichiers les plus légers, plus doux sur grand écran."
+          }
+        }
+      }
+    },
+    "Sort" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trier"
+          }
+        }
+      }
+    },
+    "Sort and Filter" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trier et filtrer"
+          }
+        }
+      }
+    },
+    "Spatial" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spatial"
+          }
+        }
+      }
+    },
+    "Spatial depth would be lost." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La profondeur spatiale serait perdue."
+          }
+        }
+      }
+    },
+    "Starting…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Démarrage…"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrêter"
+          }
+        }
+      }
+    },
+    "Stop compressing?" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrêter la compression ?"
+          }
+        }
+      }
+    },
+    "Stopped" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrêté"
+          }
+        }
+      }
+    },
+    "System" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Système"
+          }
+        }
+      }
+    },
+    "The new file didn't match the original, so it was discarded." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le nouveau fichier ne correspondait pas à l’original, il a donc été jeté."
+          }
+        }
+      }
+    },
+    "The original couldn't be loaded." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’original n’a pas pu être chargé."
+          }
+        }
+      }
+    },
+    "The original couldn't be read." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’original n’a pas pu être lu."
+          }
+        }
+      }
+    },
+    "The originals are in Recently Deleted, where iOS keeps them for 30 days. Empty it in Photos to get the space back now." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les originaux sont dans « Suppressions récentes », où iOS les garde 30 jours. Videz-le dans Photos pour récupérer l’espace tout de suite."
+          }
+        }
+      }
+    },
+    "The slow-motion ramp couldn't be edited anymore." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La rampe du ralenti ne pourrait plus être modifiée."
+          }
+        }
+      }
+    },
+    "Their copies are in your library. Removing them gives back %@." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leurs copies sont dans votre photothèque. Les supprimer libère %@."
+          }
+        }
+      }
+    },
+    "This device can't encode that format." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet appareil ne peut pas encoder ce format."
+          }
+        }
+      }
+    },
+    "This file format isn't supported." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce format de fichier n’est pas pris en charge."
+          }
+        }
+      }
+    },
+    "This item can't be changed from apps." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet élément ne peut pas être modifié par les apps."
+          }
+        }
+      }
+    },
+    "To free" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À libérer"
+          }
+        }
+      }
+    },
+    "Unsupported" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non pris en charge"
+          }
+        }
+      }
+    },
+    "Video" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéo"
+          }
+        }
+      }
+    },
+    "Video quality" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité vidéo"
+          }
+        }
+      }
+    },
+    "Videos" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vidéos"
+          }
+        }
+      }
+    },
+    "Videos are encoded in HEVC. HDR stays HDR, audio is kept as is. Long videos can take a while: the run keeps going if you leave the app." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les vidéos sont encodées en HEVC. Le HDR reste HDR, l’audio est gardé tel quel. Les longues vidéos peuvent prendre du temps : la compression continue si vous quittez l’app."
+          }
+        }
+      }
+    },
+    "Waiting for free space" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En attente d’espace libre"
+          }
+        }
+      }
+    },
+    "What's Kept" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ce qui est conservé"
+          }
+        }
+      }
+    },
+    "Working through photos…" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traitement des photos…"
+          }
+        }
+      }
+    },
+    "Writing failed." : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’écriture a échoué."
+          }
+        }
+      }
+    },
+    "Yellow" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaune"
+          }
+        }
+      }
+    },
+    "Your iPhone is almost full" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votre iPhone est presque plein"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

@@ -1,19 +1,49 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "CFBundleDisplayName": {
-      "shouldTranslate": false
+  "sourceLanguage" : "en",
+  "strings" : {
+    "CFBundleDisplayName" : {
+      "comment" : "Bundle display name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Screenloss"
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
-    "NSPhotoLibraryUsageDescription": {
-      "localizations": {
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Screenloss lit vos photos et vidéos pour les compresser, puis enregistre les copies plus légères dans votre photothèque. Rien ne quitte votre iPhone."
+    "CFBundleName" : {
+      "comment" : "Bundle name",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Screenloss"
+          }
+        }
+      }
+    },
+    "NSPhotoLibraryUsageDescription" : {
+      "comment" : "Privacy - Photo Library Usage Description",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Screenloss reads your photos and videos to compress them, then saves the smaller copies back to your library. Nothing leaves your iPhone."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Screenloss lit vos photos et vidéos pour les compresser, puis enregistre les copies plus légères dans votre photothèque. Rien ne quitte votre iPhone."
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

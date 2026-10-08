@@ -126,8 +126,6 @@ struct ReviewSheet: View {
                 .padding(.horizontal, 4)
                 .contentTransition(.opacity)
 
-            ComparisonCard(item: largestPhoto ?? sample, recipe: settings.recipe)
-
             GlassCard(padding: 16) {
                 VStack(spacing: 14) {
                     HStack {
@@ -157,6 +155,7 @@ struct ReviewSheet: View {
                 }
                 .font(.subheadline)
             }
+            ComparisonCard(item: largestPhoto ?? sample, recipe: settings.recipe)
         }
     }
 
